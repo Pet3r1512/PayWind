@@ -6,5 +6,15 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Create Account
     body(class="h-screen w-screen flex justify-center items-center")
-        div(class="bg-gradient-to-r from-emeral-600 to-emerald-100 w-full")
-            p This is Create Account Modal
+        div(class="bg-gradient-to-b from-emerald-600 to-emerald-100 flex justify-start gap-x-6 items-center w-[800px] md:max-w-7xl min-h-2xl mx-auto px-[40px] py-[25px] rounded-2xl")
+            h3(class="font-semibold text-2xl text-white max-w-[18rem]") The world is changing; banks should too!
+            div(class="flex-1")
+                h1(class="font-semibold text-3xl mb-[25px]") Create Account
+                div(class="")
+                    form(action="" class="flex flex-col gap-y-1") 
+                        label(for="username" class="flex flex-col gap-y-2") Username: 
+                        input(type="text" name="username" class="h-[30px] text-lg px-2 rounded-md outline-none")
+                        label(for="email") Email: 
+                        input(type="text" name="email" class="h-[30px] text-lg px-2 rounded-md outline-none")
+                        label(for="password") Password:
+                        input(type="password" name="password" class="h-[30px] text-lg px-2 rounded-md outline-none")
