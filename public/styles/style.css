@@ -529,11 +529,6 @@ video {
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
-.from-emerald-600 {
-  --tw-gradient-from: #059669;
-  --tw-gradient-to: rgb(5 150 105 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
 .to-emerald-100 {
   --tw-gradient-to: #d1fae5;
 }
