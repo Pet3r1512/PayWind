@@ -1,10 +1,23 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const { v4 } = require('uuid');
 
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, '../public')));
+
+app.get('/api', (req, res) => {
+	const path = `/api/item/${v4()}`;
+	res.setHeader('Content-Type', 'text/html');
+	res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+	res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
+});
+
+app.get('/api/item/:slug', (req, res) => {
+	const { slug } = req.params;
+	res.end(`Item: ${slug}`);
+});
 
 app.get('/signin', (req, res) => {
 	return res.render('signIn/signIn')
@@ -22,7 +35,9 @@ app.use((err, req, res, next) => {
 	res.status(500).render('errors/error_page', { error_title: '500 - Server Error', error_code: '500', error_header: "Uh oh! I think i broke it. Please report me to the system administrator!", error_des: "Internal Server Error" });
 })
 
+
+
 const server = app.listen(3000, () => {
 	console.log(`The application started on port ${server.address().port}`);
-	return res.render('user/index');
 });
+module.exports = app;
