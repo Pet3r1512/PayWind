@@ -514,14 +514,11 @@ video {
 .relative {
   position: relative;
 }
-.z-10 {
-  z-index: 10;
+.right-2 {
+  right: 0.5rem;
 }
-.-z-0 {
-  z-index: 0;
-}
-.float-right {
-  float: right;
+.top-1\/2 {
+  top: 50%;
 }
 .my-2 {
   margin-top: 0.5rem;
@@ -539,6 +536,9 @@ video {
 }
 .mb-\[25px\] {
   margin-bottom: 25px;
+}
+.block {
+  display: block;
 }
 .flex {
   display: flex;
@@ -563,20 +563,24 @@ video {
 .w-2\/3 {
   width: 66.666667%;
 }
+.w-full {
+  width: 100%;
+}
 .w-screen {
   width: 100vw;
 }
 .w-\[800px\] {
   width: 800px;
 }
-.w-full {
-  width: 100%;
-}
 .max-w-\[18rem\] {
   max-width: 18rem;
 }
 .flex-1 {
   flex: 1 1 0%;
+}
+.translate-y-\[-50\%\] {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .cursor-pointer {
   cursor: pointer;
@@ -628,10 +632,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(99 102 241 / var(--tw-bg-opacity));
 }
-.bg-slate-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
-}
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -642,9 +642,6 @@ video {
 }
 .to-emerald-100 {
   --tw-gradient-to: #d1fae5;
-}
-.bg-right {
-  background-position: right;
 }
 .p-6 {
   padding: 1.5rem;
@@ -727,6 +724,9 @@ video {
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
+}
 .hover\:bg-indigo-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(67 56 202 / var(--tw-bg-opacity));
@@ -734,10 +734,6 @@ video {
 .hover\:text-indigo-300:hover {
   --tw-text-opacity: 1;
   color: rgb(165 180 252 / var(--tw-text-opacity));
-}
-.hover\:text-indigo-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(129 140 248 / var(--tw-text-opacity));
 }
 @media (min-width: 768px) {
 
