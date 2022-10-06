@@ -13,9 +13,9 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, '../public')))
 
 app.get('/signin', (req, res) => {
-    res.render('signIn/signIn')
+   return res.render('signIn/signIn')
 })
 
 app.get('/', (req, res) => {
-	res.render('user/index');
+	return res.render('user/index');
 });
