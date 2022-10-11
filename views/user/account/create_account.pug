@@ -4,17 +4,31 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/styles/style.css")
         title Create New Account
-    body(class="h-screen w-screen flex justify-center items-center")
-        div(class="bg-gradient-to-b from-emerald-600 to-emerald-100 flex justify-start gap-x-6 items-center w-[800px] md:max-w-7xl min-h-2xl mx-auto px-[40px] py-[25px] rounded-2xl")
-            h3(class="font-semibold text-2xl text-white max-w-[18rem]") The world is changing; banks should too!
-            div(class="flex-1")
-                h1(class="font-semibold text-3xl mb-[25px]") Create Account
-                div(class="")
-                    form(action="" class="flex flex-col gap-y-1") 
-                        label(for="username" class="flex flex-col gap-y-2") Username: 
-                        input(type="text" name="username" class="h-[30px] text-lg px-2 rounded-md outline-none")
-                        label(for="email") Email: 
-                        input(type="text" name="email" class="h-[30px] text-lg px-2 rounded-md outline-none")
-                        label(for="password") Password:
-                        input(type="password" name="password" class="h-[30px] text-lg px-2 rounded-md outline-none")
+        block script
+            script
+                include ../../lib/javascripts/create_account.js
+
+    body(class="w-screen, h-screen flex justify-center items-center")
+        form(method='post', action="/profile/information", class="flex w-3/4 lg:w-2/3 h-fit border p-6 rounded-2xl gap-6")
+            div(class="flex justify-start items-start w-1/3 bg-indigo-500 text-white px-4 py-5 rounded-2xl")
+                include ../../lib/layouts/logo.pug
+            div(class="flex flex-col w-2/3")
+                p(class="font-semibold text-[30px] mb-16") Create New Account
+                div(class="flex flex-col gap-y-6")
+                    input(type="email", placeholder="Email", class="border p-2 rounded-md")
+                    input(type="text", placeholder="Username", class="border p-2 rounded-md")
+                    div(class="relative")
+                        input(type="password", placeholder="Password", name="password", class="border p-2 rounded-md w-full", id="pass_input" required)
+                        span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
+                            include ../../../public/images/eye-outline.svg
+                            include ../../../public/images/eye-off-outline.svg
+                    div(class="relative")
+                        input(type="password", placeholder="Confirm Password", name="confirm_password", class="border p-2 rounded-md w-full", id="confirm_pass" required)
+                        span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
+                            include ../../../public/images/eye-outline.svg
+                            include ../../../public/images/eye-off-outline.svg
+                    input(type="submit", onClick="check_create_account()", value="Sign In" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-indigo-500 text-white ease-in-out delay-100 hover:bg-indigo-700 hover:-translate-y-1.5 hover:scale-105 duration-300")
+                p Alreay have an account?
+                    a(href="../account/signin", class="ml-2 underline text-indigo-500 hover:text-indigo-300") Sign In
