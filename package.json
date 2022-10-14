@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch"
+    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch",
+    "start": "node ./js/index.js",
+    "dev": "nodemon ./js/index.js"
   },
   "dependencies": {
     "autoprefixer": "^10.4.12",
@@ -14,5 +16,8 @@
     "pug": "^3.0.2",
     "tailwindcss": "^3.1.8",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
