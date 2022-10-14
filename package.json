@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch",
-    "start": "node ./js/index.js",
-    "dev": "nodemon ./js/index.js"
+    "start": "node ./js/index.js & postcss public/styles/tailwind.css -o public/styles/style.css",
+    "dev": "nodemon ./js/index.js & postcss public/styles/tailwind.css -o public/styles/style.css --watch"
   },
   "dependencies": {
     "autoprefixer": "^10.4.12",
