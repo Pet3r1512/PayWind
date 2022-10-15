@@ -22,16 +22,7 @@ var card = [
         exp: "08/22",
         id: "222222222"
     },
-    {
-        name: "5",
-        exp: "08/22",
-        id: "222222222"
-    },
-    {
-        name: "6",
-        exp: "08/22",
-        id: "222222222"
-    }
+
 ]
 
 router.get('/change_password', (req, res) => {
