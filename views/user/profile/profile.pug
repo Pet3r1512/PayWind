@@ -8,26 +8,35 @@ html(lang="en")
       link(rel="stylesheet", href="/styles/style.css", type="text/css")
 
    body(class="h-screen leading-relaxed flex flex-col m-5")
-      div(class="flex justify-end")
-         p #{id}
-      div(class="intro my-4")
-         p Welcome
-         h1(class="text-2xl font-semibold") Dashboard
-      div(class="my-4 p-4 pt-6 border border-black rounded-lg w-full flex flex-col")
-         p Wallets details
-         div(class="m-4 mb-8 border border-black rounded-2xl p-4")
-            p Your balance:
-            p #money
-            p #card
-         div(class="flex")
-            p Cards
-            p(class="ml-2 border rounded-md bg-gray-500 text-white text-xs w-fit h-fit p-1 px-2") #{card_count}
-         each item in cards
-            ul
-               li
-                  div(class="m-4 border border-black rounded-2xl p-4")
+      //intro
+      div(class="flex justify-between")
+         div(class="text-left")
+            p Welcome
+            h1(class="text-2xl font-semibold") Dashboard
+         p(class="text-right") #{id}
+
+      //wallet box
+      div(class="mt-4 sm:my-4 sm:flex sm:justify-between")
+         //wallet details
+         div(class="pt-4 px-6 border border-black rounded-2xl w-full flex flex-col sm:w-3/5")
+            p(class="mb-4") Wallet details
+            div(class="border border-black rounded-2xl p-4 mx-6")
+               p Your balance:
+               p #money
+               p #card
+            div(class="flex my-4")
+               p Cards
+               p(class="ml-2 border rounded-md bg-gray-500 text-white text-xs w-fit h-fit p-1 px-2") #{card_count}
+            div(class="flex flex-col sm:flex-row sm:flex-wrap")
+               each item in cards
+                  div(class="mb-6 border border-black rounded-2xl p-4 sm:w-[230px] sm:mx-auto")
                      p=item.name
                      p=item.id
-                     p=item.exp
-      div(class="my-4 p-4 border border-black rounded-lg")
+                     div(class="border-0 border-t-2 w-full")
+                        p=item.exp
+         //card details
+         div(class="mt-4 sm:ml-6 sm:mt-0 p-4 px-6 border border-black rounded-2xl sm:w-2/5")
+            div(class="w-1/2 items-center")
+               p Card details
+      div(class="mt-4 p-4 border border-black rounded-2xl")
          p Status
