@@ -9,3 +9,6 @@ https://www.figma.com/file/2wEMJnfu1x68ppKxwuk6rP/Banking-System-(Community)?nod
 MongoDB + Mongose + ExpressJS: https://viblo.asia/p/xay-dung-simple-api-voi-express-va-mongoose-RQqKLYJ0Z7z
 
 Primary color: indigo-600
+
+
+PayWind Figma Design Link: https://www.figma.com/file/edof4NtFKkMGyTLjTf1oXZ/PayWind?node-id=0%3A1
