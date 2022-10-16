@@ -8,7 +8,7 @@ html(lang="en")
       link(rel="stylesheet", href="/styles/style.css", type="text/css")
       block script
          script
-            include ../../lib/javascripts/show_pass.js
+            include ../../assets/javascripts/show_pass.js
 
    body(class="w-screen, h-screen flex justify-center items-center")
       form(method='post', class="flex w-3/4 lg:w-2/3 h-fit border p-6 rounded-lg gap-6")
@@ -24,4 +24,4 @@ html(lang="en")
                      include ../../../public/images/eye-off-outline.svg
                input(type="submit", value="Sign In" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-indigo-500 text-white ease-in-out delay-100 hover:bg-indigo-700 hover:-translate-y-1.5 hover:scale-105 duration-300")
             p Don't have account?
-               a(href="../createAccount/create_account.pug", class="ml-2 underline text-indigo-500 hover:text-indigo-300") Create Account
+               a(href="/account/create_account", class="ml-2 underline text-indigo-500 hover:text-indigo-300") Create Account
