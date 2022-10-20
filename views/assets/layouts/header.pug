@@ -7,7 +7,10 @@ html(lang="en")
         link(rel="stylesheet", href="/styles/style.css")
         title Header
     body    
-        div(class="flex justify-between items-center")
+        div(class="flex justify-between items-center mt-[30px] px-4 nd:px-0")
+            span(class="h-[40px] w-[40px] md:hidden")
+                include ../../../public/icons/menu.svg
             img(src="/images/main_logo.png", alt="PayWind", class="")
-            include ./_menu.pug
-            button Sign In
+            div(class="hidden md:block") 
+                include ./_menu.pug
+            button(class="bg-indigo-500 text-white ease-in-out deplay-100 hover:bg-indigo-700 duration-300 px-[20px] py-[5px] rounded-lg font-semibold") Sign In
