@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch",
+    "css": "postcss public/css/tailwind.css -o public/css/style.css --watch",
     "start": "node public/js/main.js",
     "dev": "nodemon public/js/main.js"
   },
