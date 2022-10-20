@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 
 app.get('/', (req, res) => {
-	res.render('user/index.pug');
+	res.render('user/homepage.pug');
 });
 
 app.use('/account', require('../routes/account.route'))
