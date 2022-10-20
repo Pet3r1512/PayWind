@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch",
+    "tailwind": "postcss public/styles/tailwind.css -o public/styles/style.css",
     "start": "node ./js/index.js",
     "dev": "nodemon ./js/index.js"
   },
