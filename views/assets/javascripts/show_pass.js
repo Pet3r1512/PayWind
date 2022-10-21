@@ -1,6 +1,6 @@
-function showPass() {
-    var pass = document.getElementById('pass-input')
-    var passConfirm = document.getElementById('pass-confirm')
+function show_pass() {
+    var pass = document.getElementById('pass_input')
+    var passConfirm = document.getElementById('confirm_pass')
     var eyeOn = document.getElementsByClassName('eye-on')
     var eyeOff = document.getElementsByClassName('eye-off')
 
