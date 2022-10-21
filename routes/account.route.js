@@ -1,11 +1,13 @@
 const router = require('express').Router();
 
 router.get('/signin', (req, res) => {
-    return res.render('../views/user/account/sign_in.pug')
+    return res.render('account/entry/sign_in')
 })
 
-router.get('/create_account', (req, res) => {
-    return res.render('../views/user/account/create_account.pug')
+router.get('/signup', (req, res) => {
+    return res.render('account/entry/sign_up')
 })
+
+router.use('/user', require('./user.route'))
 
 module.exports = router

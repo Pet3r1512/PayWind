@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+   head
+      meta(charset="UTF-8")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      title Profile
+      link(rel="stylesheet", href="/css/style.css", type="text/css")
+
+   body(class="h-screen leading-relaxed flex flex-col m-6")
+      div(class="container max-w-[1440px] mx-auto")
+         //intro
+         div(class="flex justify-between")
+            div(class="text-left")
+               p Welcome
+               h1(class="text-2xl font-semibold") Dashboard
+            p(class="text-right") #{id}
+
+         //wallet box
+         div(class="mt-4 sm:my-4 sm:flex sm:justify-between")
+            //wallet details
+            div(class="pt-4 pl-6 border border-black rounded-2xl w-full flex flex-col sm:w-[820px]")
+               p(class="mb-4") Wallet details
+               div(class="border border-black rounded-2xl p-4 mr-6")
+                  p Your balance:
+                  p #money
+                  p #card
+               div(class="flex my-4")
+                  p Cards
+                  p(class="ml-2 border rounded-md bg-gray-500 text-white text-xs w-fit h-fit p-1 px-2") #{card_count}
+               div(class="flex flex-col sm:flex-row sm:flex-wrap")
+                  each item in cards
+                     div(class="mb-6 p-4 border border-black rounded-2xl sm:w-[240px] mr-6 hover:cursor-pointer hover:bg-slate-100 ease-in-out delay-75 hover:scale-105 duration-300")
+                        p=item.name
+                        p=item.id
+                        div(class="border-0 border-t-2 w-full")
+                           p=item.exp
+                  div(class="mb-6 p-4 border border-dashed border-black rounded-2xl sm:w-[240px] mr-6 text-center hover:cursor-pointer hover:bg-slate-100 ease-in-out delay-75 hover:scale-105 duration-300")
+                     p(class="relative sm:top-[50%] sm:translate-y-[-50%]") Add card
+            //card details
+            div(class="mt-4 sm:ml-6 sm:mt-0 p-4 px-6 border border-black rounded-2xl sm:w-[550px]")
+               div(class="w-1/2 items-center")
+                  p Card details
+         div(class="mt-4 p-4 border border-black rounded-2xl")
+            p Status

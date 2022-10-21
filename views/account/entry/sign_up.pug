@@ -4,12 +4,12 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        <link rel="icon" href="/images/Logomark.png">
-        link(rel="stylesheet", href="/styles/style.css")
+        link(rel="icon" href="/images/Logomark.png")
+        link(rel="stylesheet", href="/css/style.css")
         title PayWind | Create New Account
         block script
-            script
-                include ../../assets/javascripts/create_account.js
+         script
+            include ../../assets/javascripts/show_pass.js
 
     body(class="w-screen, h-screen flex justify-center items-center")
         form(method='post', action="/profile/information", class="flex w-3/4 lg:w-2/3 h-fit border p-6 rounded-2xl gap-6")
@@ -33,4 +33,4 @@ html(lang="en")
                             include ../../../public/icons/eye-off-outline.svg
                     button(onClick="check_create_account()", value="Create Account" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-indigo-500 text-white ease-in-out delay-100 hover:bg-indigo-700 hover:-translate-y-1.5 hover:scale-105 duration-300", id="submit") Create Account
                 p Alreay have an account?
-                    a(href="../account/signin", class="ml-2 underline text-indigo-500 hover:text-indigo-300") Sign In
+                    a(href="signin", class="ml-2 underline text-indigo-500 hover:text-indigo-300") Sign In

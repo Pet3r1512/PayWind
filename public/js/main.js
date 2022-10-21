@@ -2,20 +2,17 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.set('views', path.join(__dirname, '../views'));
+app.locals.basedir = path.join(__dirname, '../')
+app.set('views', path.join(__dirname, '../../views'));
 app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-	res.render('user/homepage.pug');
+	res.render('index');
 });
 
-app.use('/account', require('../routes/account.route'))
-
-app.use('/features', require('../routes/features.route'))
-
-app.use('/profile', require('../routes/profile.route'))
+app.use('/account', require('../../routes/account.route.js'))
 
 // app.use((req, res) => {
 // 	res.status(404).render('../views/errors/error_page', { error_title: '404 - Not Found', error_code: '404', error_header: "Oops! You weren't suppose to see this", error_des: "The page you're looking for no longer exists." });

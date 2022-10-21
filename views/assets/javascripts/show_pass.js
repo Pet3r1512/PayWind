@@ -1,20 +1,32 @@
 function show_pass() {
-    var pass = document.getElementById('passInput')
-    var eyeOn = document.getElementById('eye-on')
-    var eyeOff = document.getElementById('eye-off')
+    var pass = document.getElementById('pass_input')
+    var passConfirm = document.getElementById('confirm_pass')
+    var eyeOn = document.getElementsByClassName('eye-on')
+    var eyeOff = document.getElementsByClassName('eye-off')
+
+    if (passConfirm) {
+        if (passConfirm.type == "password") {
+            passConfirm.type = "text"
+        } else {
+            passConfirm.type = "password"
+        }
+    }
 
     if (pass.type == "password") {
         pass.type = "text"
-        eyeOn.style.visibility = "hidden"
-        eyeOn.style.display = "none"
-        eyeOff.style.visibility = "visible"
-        eyeOff.style.display = "block"
+        for (let i = 0; i < eyeOn.length; i++) {
+            eyeOn[i].style.visibility = "hidden"
+            eyeOn[i].style.display = "none"
+            eyeOff[i].style.visibility = "visible"
+            eyeOff[i].style.display = "block"
+        }
     } else {
         pass.type = "password"
-        eyeOff.style.visibility = "hidden"
-        eyeOff.style.display = "none"
-        eyeOn.style.visibility = "visible"
-        eyeOn.style.display = "block"
+        for (let i = 0; i < eyeOn.length; i++) {
+            eyeOff[i].style.visibility = "hidden"
+            eyeOff[i].style.display = "none"
+            eyeOn[i].style.visibility = "visible"
+            eyeOn[i].style.display = "block"
+        }
     }
-
 }

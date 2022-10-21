@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch",
-    "tailwind": "postcss public/styles/tailwind.css -o public/styles/style.css",
-    "start": "node ./js/index.js",
-    "dev": "nodemon ./js/index.js"
+    "start": "node public/js/main.js",
+    "dev": "nodemon public/js/main.js",
+    "css": "postcss public/css/tailwind.css -o public/css/style.css --watch",
+    "tailwind": "postcss public/css/tailwind.css -o public/css/style.css"
   },
   "dependencies": {
     "autoprefixer": "^10.4.12",
