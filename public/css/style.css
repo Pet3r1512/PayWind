@@ -506,6 +506,15 @@ video {
 .top-1\/2 {
   top: 50%;
 }
+.bottom-0 {
+  bottom: 0px;
+}
+.bottom-\[20px\] {
+  bottom: 20px;
+}
+.bottom-\[50px\] {
+  bottom: 50px;
+}
 .m-6 {
   margin: 1.5rem;
 }
@@ -542,6 +551,9 @@ video {
 .mt-\[30px\] {
   margin-top: 30px;
 }
+.mt-\[50px\] {
+  margin-top: 50px;
+}
 .block {
   display: block;
 }
@@ -567,6 +579,9 @@ video {
 .h-\[40px\] {
   height: 40px;
 }
+.h-\[30px\] {
+  height: 30px;
+}
 .w-full {
   width: 100%;
 }
@@ -588,6 +603,21 @@ video {
 }
 .w-\[40px\] {
   width: 40px;
+}
+.w-\[300px\] {
+  width: 300px;
+}
+.w-\[30px\] {
+  width: 30px;
+}
+.w-\[250px\] {
+  width: 250px;
+}
+.w-\[200px\] {
+  width: 200px;
+}
+.w-\[150px\] {
+  width: 150px;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -629,13 +659,12 @@ video {
 .gap-y-6 {
   row-gap: 1.5rem;
 }
-.gap-x-14 {
-  -moz-column-gap: 3.5rem;
-       column-gap: 3.5rem;
-}
 .gap-x-6 {
   -moz-column-gap: 1.5rem;
        column-gap: 1.5rem;
+}
+.gap-y-\[50px\] {
+  row-gap: 50px;
 }
 .rounded {
   border-radius: 0.25rem;
@@ -648,6 +677,9 @@ video {
 }
 .rounded-md {
   border-radius: 0.375rem;
+}
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 .border {
   border-width: 1px;
@@ -696,6 +728,9 @@ video {
 .p-1 {
   padding: 0.25rem;
 }
+.p-\[20px\] {
+  padding: 20px;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -735,6 +770,10 @@ video {
 .py-\[5px\] {
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.px-\[15px\] {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .pb-12 {
   padding-bottom: 3rem;
@@ -935,11 +974,6 @@ video {
     justify-content: space-between;
   }
 
-  .sm\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
   .sm\:px-2 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -964,6 +998,11 @@ video {
          column-gap: 3.5rem;
   }
 
+  .md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .md\:py-20 {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -972,21 +1011,6 @@ video {
   .md\:px-44 {
     padding-left: 11rem;
     padding-right: 11rem;
-  }
-
-  .md\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
-  .md\:px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .md\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 }
 @media (min-width: 1024px) {
