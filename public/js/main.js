@@ -9,8 +9,13 @@ app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-	res.render('index');
+	res.render('homepage');
 });
+
+// Test admin page
+app.get('/admin', (req, res) => {
+	res.render('admin/admin')
+})
 
 app.use('/account', require('../../routes/account.route.js'))
 
