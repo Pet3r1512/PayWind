@@ -2,7 +2,11 @@
 module.exports = {
 	content: ['./views/**/*.pug'],
 	theme: {
-		extend: {},
+		fontFamily: {
+			'kanit': 'Kanit, sans-serif',
+			'sourcepro': '"Source Sans Pro", sans-serif'
+		}
+
 	},
 	plugins: [],
 };
