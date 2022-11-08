@@ -18,7 +18,7 @@ var userSchema = mongoose.Schema({
             validator: function(v){
                 return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(v)
             },
-            message: "Password must contains at least 6 characters, 1 uppercase letter, 1 lowercase letter and 1 number"
+            message: "Password must contain at least 6 characters, 1 uppercase letter, 1 lowercase letter and 1 number"
         }
     }
 })
