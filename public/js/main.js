@@ -3,6 +3,8 @@ const session = require('express-session')
 const passport = require('passport')
 const app = express();
 const path = require('path');
+const mongoose = require("mongoose")
+require("dotenv").config()
 
 
 app.locals.basedir = path.join(__dirname, '../')
@@ -40,7 +42,7 @@ app.use('/account', require('../../routes/account.route.js'))
 // })
 
 const server = app.listen(process.env.PORT || 3000, () => {
-
+	mongoose.connect(process.env.SERVER_URL)
 	console.log(`The application started on port ${process.env.PORT || 3000}`);
 });
 
