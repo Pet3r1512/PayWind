@@ -7,16 +7,10 @@ var userSchema = mongoose.Schema({
         username: String,
         email: {
             type: String,
-            unique: true
+            unique: true,
         },
-        password: String,
-    }
+        password: String
+    },
 })
 
-userSchema.methods.generateHash = function(password){
-    return bcrypt.hash(password, saltRounds, null)
-}
-
-var User = mongoose.model("User", userSchema)
-
-module.exports = User
+module.exports = mongoose.model("User", userSchema)

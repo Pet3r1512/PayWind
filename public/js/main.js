@@ -22,6 +22,10 @@ app.use(session({
 	cookie: {}
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
+require('./config/passport')
+
 app.get('/', (req, res) => {
 	res.render('homepage');
 });
@@ -42,7 +46,7 @@ app.use('/account', require('../../routes/account.route.js'))
 // })
 
 const server = app.listen(process.env.PORT || 3000, () => {
-	mongoose.connect(process.env.SERVER_URL)
+	mongoose.connect(process.env.DATABASE_URL)
 	console.log(`The application started on port ${process.env.PORT || 3000}`);
 });
 
