@@ -1,6 +1,7 @@
 async function isExisted() {
     const email = document.getElementById("email")
     const emailError = document.getElementById("emailError")
+    const submit = document.getElementById("submit")
 
     const res = await (await fetch(`http://localhost:3000/account/email/isExisted/${email.value}`)).json()
 
@@ -18,5 +19,7 @@ async function isExisted() {
         emailError.style.display = "block"
         emailError.style.fontSize = "13px"
         emailError.style.color = "red"
+        submit.disabled = true
+        submit.style.backgroundColor = "gray"
     }
 }

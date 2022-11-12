@@ -17,24 +17,19 @@ router.get('/signup', (req, res) => {
 router.post('/signup', (req, res) => {
     var data = req.body
     var user = new User()
-    User.findOne({ email: data.email }, (err, user) => {
-        if(user){
-            return res.redirect(req.get('referer'))
+
+    bcrypt.hash(data.password, saltRounds, function(err, hash){
+        if(hash){
+            user.local.username = data.username
+            user.local.email = data.email
+            user.local.password = hash
+
+            user.save((err, user) => {
+                if(err){
+                    return res.send(err)
+                }
+            })
         }
-
-        bcrypt.hash(data.password, saltRounds, function(err, hash){
-            if(hash){
-                user.local.username = data.username
-                user.local.email = data.email
-                user.local.password = hash
-
-                user.save((err, user) => {
-                    if(err){
-                        return res.send(err)
-                    }
-                })
-            }
-        })
     })
 
     return generateAccessToken(user.local.username)
