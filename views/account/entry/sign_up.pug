@@ -15,6 +15,8 @@ html(lang="en")
          script
             include ../../assets/javascripts/show_pass.js
             include ../../assets/javascripts/emailValidation.js
+            include ../../assets/javascripts/passValidation.js
+            include ../../assets/javascripts/passRegEx.js
 
     body(class="flex flex-col w-screen h-screen items-center bg-[#E1E5E8]")
         img(src="/images/main_logo.png", alt="PayWind" class="m-6")
@@ -27,16 +29,20 @@ html(lang="en")
                         input(type="email", placeholder="Email" id="email" name="email" class="border border-slate-400 p-2 pl-4 rounded-md w-full" oninput="emailValidation()")
                         p(id="emailError" class="pt-2 pl-2 m-0 hidden h-fit")
                     input(type="text", placeholder="Username", name="username" class="border border-slate-400 p-2 pl-4 rounded-md")
-                    div(class="relative")
-                        input(type="password", placeholder="Password", name="password", class="border border-slate-400 p-2 pl-4 rounded-md w-full", id="pass_input" required)
-                        span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
-                            include ../../../public/icons/eye-outline.svg
-                            include ../../../public/icons/eye-off-outline.svg
-                    div(class="relative")
-                        input(type="password", placeholder="Confirm Password", name="confirm_password", class="border border-slate-400 p-2 pl-4 rounded-md w-full", id="confirm_pass" required)
-                        span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
-                            include ../../../public/icons/eye-outline.svg
-                            include ../../../public/icons/eye-off-outline.svg
+                    div
+                        div(class="relative")
+                            input(type="password", placeholder="Password", name="password", class="border border-slate-400 p-2 pl-4 rounded-md w-full", id="pass_input" oninput="passRegEx()" required)
+                            span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
+                                include ../../../public/icons/eye-outline.svg
+                                include ../../../public/icons/eye-off-outline.svg
+                        p(id="pass_regEx" class="pt-2 pl-2 m-0 hidden h-fit")
+                    div
+                        div(class="relative")
+                            input(type="password", placeholder="Confirm Password", name="confirm_password", class="border border-slate-400 p-2 pl-4 rounded-md w-full", id="confirm_pass" oninput="passValidation()" required)
+                            span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
+                                include ../../../public/icons/eye-outline.svg
+                                include ../../../public/icons/eye-off-outline.svg
+                        p(id="pass_valid" class="pt-2 pl-2 m-0 hidden h-fit")
                     button(onClick="check_create_account()" value="Create Account" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-indigo-500 text-white ease-in-out delay-100 hover:bg-indigo-700 hover:-translate-y-1.5 hover:scale-105 duration-300", id="submit") Create Account
                 p(class="mt-4 text-center") Already have an account?
                     a(href="signin", class="ml-2 underline text-indigo-500 hover:text-indigo-300") Sign In
