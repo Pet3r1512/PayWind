@@ -1,6 +1,4 @@
 const mongoose = require("mongoose")
-const bcrypt = require("bcrypt")
-const saltRounds = 10
 
 var userSchema = mongoose.Schema({
     local: {
@@ -13,4 +11,6 @@ var userSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model("User", userSchema)
+var User = mongoose.model("User", userSchema)
+
+module.exports = User
