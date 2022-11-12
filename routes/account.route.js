@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const saltRounds = 10
 const bcrypt = require("bcrypt")
 const User = require('../models/user')
+const userController = require('../api/userController')
 
 function generateAccessToken(username) {
     return jwt.sign({ "user": username }, process.env.TOKEN_SECRET, { expiresIn: '1800s' })
@@ -47,5 +48,7 @@ router.get('/signin', (req, res) => {
 router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/signin'}))
 
 router.use('/user', require('./user.route'))
+
+router.get('/email/isExisted/:email', userController.isExisted)
 
 module.exports = router
