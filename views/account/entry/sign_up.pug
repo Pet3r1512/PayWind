@@ -14,6 +14,8 @@ html(lang="en")
         block script
          script
             include ../../assets/javascripts/show_pass.js
+            include ../../assets/javascripts/isExisted.js
+            include ../../assets/javascripts/onLoad.js
 
     body(class="flex flex-col w-screen h-screen items-center bg-[#E1E5E8]")
         img(src="/images/main_logo.png", alt="PayWind" class="m-6")
@@ -22,7 +24,9 @@ html(lang="en")
             div(class="flex flex-col md:w-2/3")
                 p(class="font-semibold text-[30px] md:mb-12 mb-10 text-center font-kanit") Sign Up
                 div(class="flex flex-col gap-y-6 font-sourcepro")
-                    input(type="email", placeholder="Email", name="email" class="border border-slate-400 p-2 pl-4 rounded-md")
+                    div
+                        input(type="email", placeholder="Email" id="email" name="email" class="border border-slate-400 p-2 pl-4 rounded-md w-full" onchange="isExisted()" oninput="onLoad()")
+                        p(id="emailError" class="pt-2 pl-2 m-0 hidden h-fit")
                     input(type="text", placeholder="Username", name="username" class="border border-slate-400 p-2 pl-4 rounded-md")
                     div(class="relative")
                         input(type="password", placeholder="Password", name="password", class="border border-slate-400 p-2 pl-4 rounded-md w-full", id="pass_input" required)
