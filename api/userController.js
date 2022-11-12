@@ -3,7 +3,7 @@ const User = require("../models/user")
 module.exports = {
     isExisted: (req, res) => {
         const emailInput = req.params.email
-        User.find({ "local.email": emailInput } , function(err, data){
+        User.find({ "local.email": emailInput }, {lean:true}, function(err, data){
             if(err){
                 return res.json({ "err": err })
             }
