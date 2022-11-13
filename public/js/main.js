@@ -1,12 +1,30 @@
 const express = require('express');
+const session = require('express-session')
+const passport = require('passport')
 const app = express();
 const path = require('path');
+const mongoose = require("mongoose")
+require("dotenv").config()
+
 
 app.locals.basedir = path.join(__dirname, '../')
 app.set('views', path.join(__dirname, '../../views'));
 app.set('view engine', 'pug');
 app.use(express.static('public'));
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+app.use(session({
+	secret: "pay pay pay",
+	resave: false,
+	saveUninitialized: false,
+	cookie: {}
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+require('./config/passport')
 
 app.get('/', (req, res) => {
 	res.render('homepage');
@@ -28,6 +46,7 @@ app.use('/account', require('../../routes/account.route.js'))
 // })
 
 const server = app.listen(process.env.PORT || 3000, () => {
+	mongoose.connect(process.env.DATABASE_URL)
 	console.log(`The application started on port ${process.env.PORT || 3000}`);
 });
 
