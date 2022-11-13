@@ -4,6 +4,7 @@ const passport = require('passport')
 const app = express();
 const path = require('path');
 const mongoose = require("mongoose")
+const MongoStore = require('connect-mongo');
 require("dotenv").config()
 
 
@@ -19,7 +20,8 @@ app.use(session({
 	secret: "pay pay pay",
 	resave: false,
 	saveUninitialized: false,
-	cookie: {}
+	cookie: {},
+	store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL })
 }))
 
 app.use(passport.initialize())
