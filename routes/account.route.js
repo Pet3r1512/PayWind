@@ -36,7 +36,6 @@ router.post('/signup', (req, res) => {
 })
 
 router.get('/signin', (req, res) => {
-    console.log(res)
     return res.render('account/entry/sign_in')
 })
 
