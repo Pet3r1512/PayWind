@@ -49,7 +49,7 @@ app.use((err, req, res, next) => {
 
 const server = app.listen(process.env.PORT || 3000, () => {
 	mongoose.connect(process.env.DATABASE_URL)
-	console.log(`The application started on port ${process.env.PORT || 3000}`);
+	console.log(`The application started on http://localhost:${process.env.PORT}/`);
 });
 
 module.exports = app;
