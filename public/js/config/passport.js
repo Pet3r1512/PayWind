@@ -20,7 +20,7 @@ passport.use(new localStrategy({
     usernameField: 'email',
     passwordField: 'password',
 }, function(username, password, done){
-    User.findOne({ email: username }, function(err, user){
+    User.findOne({ "local.email": username }, function(err, user){
         if(err){
             return done(err)
         }
@@ -29,7 +29,7 @@ passport.use(new localStrategy({
             return done(null, false, { message: "Incorrect username" })
         }
 
-        if(!(bcrypt.compare(password, user.password))){
+        if(!(bcrypt.compareSync(password, user.local.password))){
             return done(null, false, { message: "Incorrect password" })
         }
 

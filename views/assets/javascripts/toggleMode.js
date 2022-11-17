@@ -19,10 +19,12 @@ function toggleMode(){
         email.style.borderColor = "#282828"
         inputPass.style.borderColor = "#282828"
 
-        username.style.backgroundColor = "#404040"
-        passConfirm.style.backgroundColor = "#404040"
-        username.style.borderColor = "#282828"
-        passConfirm.style.borderColor = "#282828"
+        if(username && passConfirm){
+            username.style.backgroundColor = "#404040"
+            passConfirm.style.backgroundColor = "#404040"
+            username.style.borderColor = "#282828"
+            passConfirm.style.borderColor = "#282828"
+        }
     } else {
         body.style.backgroundColor = "#E1E5E8"
         body.style.transitionDuration ="300ms"
@@ -35,9 +37,11 @@ function toggleMode(){
         email.style.borderColor = "rgb(202, 213, 225)"
         inputPass.style.borderColor = "rgb(202, 213, 225)"
 
-        username.style.backgroundColor = "#FFFFFF"
-        passConfirm.style.backgroundColor = "#FFFFFF"
-        username.style.borderColor = "rgb(202, 213, 225)"
-        passConfirm.style.borderColor = "rgb(202, 213, 225)"
+        if(username && passConfirm){
+            username.style.backgroundColor = "#FFFFFF"
+            passConfirm.style.backgroundColor = "#FFFFFF"
+            username.style.borderColor = "rgb(202, 213, 225)"
+            passConfirm.style.borderColor = "rgb(202, 213, 225)"
+        }
     }
 }
