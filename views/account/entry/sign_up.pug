@@ -18,19 +18,20 @@ html(lang="en")
             include ../../assets/javascripts/emailValidation.js
             include ../../assets/javascripts/passValidation.js
             include ../../assets/javascripts/passRegEx.js
+            include ../../assets/javascripts/toggleMode.js
 
     body(class="w-screen h-screen bg-[#E1E5E8] flex flex-col", id="body")
         div(class="flex flex-col flex-1 items-center")
             a(href="/")
                 img(src="/images/main_logo.png", alt="PayWind" class="m-6")
-            form(method='post', class="flex flex-col w-3/4 md:w-1/3 lg:w-1/4 md:px-0 md:gap-4 h-fit border border-slate-300 p-8 py-12 rounded-[1.5rem] gap-6 bg-white justify-center items-center shadow-lg")
+            form(method='post', class="flex flex-col w-3/4 md:w-1/3 lg:w-1/4 md:px-0 md:gap-4 h-fit border border-slate-300 p-8 py-12 rounded-[1.5rem] gap-6 bg-white justify-center items-center shadow-lg", id="form")
                 div(class="flex flex-col md:w-2/3")
                     p(class="font-semibold text-[30px] md:mb-12 mb-10 text-center font-kanit") Sign Up
                     div(class="flex flex-col gap-y-6 font-sourcepro")
                         div
                             input(type="email", placeholder="Email" id="email" name="email" class="border border-slate-400 p-2 pl-4 rounded-md w-full" oninput="emailValidation()")
                             p(id="emailError" class="pt-2 pl-2 m-0 hidden h-fit")
-                        input(type="text", placeholder="Username", name="username" class="border border-slate-400 p-2 pl-4 rounded-md")
+                        input(type="text", placeholder="Username" id="username" name="username" class="border border-slate-400 p-2 pl-4 rounded-md")
                         div
                             div(class="relative")
                                 input(type="password", placeholder="Password", name="password", class="border border-slate-400 p-2 pl-4 rounded-md w-full", id="pass_input" oninput="passRegEx()" required)
@@ -45,7 +46,7 @@ html(lang="en")
                                     include ../../../public/icons/eye-outline.svg
                                     include ../../../public/icons/eye-off-outline.svg
                             p(id="pass_valid" class="pt-2 pl-2 m-0 hidden h-fit")
-                        button(onClick="check_create_account()" value="Create Account" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-blue-500 text-white ease-in-out delay-100 hover:bg-blue-700 hover:-translate-y-1.5 hover:scale-105 duration-300", id="submit") Create Account
+                        button(onClick="check_create_account()" value="Create Account" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-blue-500 text-white ease-in-out delay-100 hover:bg-blue-700 hover:-translate-y-1.5 hover:scale-105 duration-300 border-[#282828]", id="submit") Create Account
                     p(class="mt-4 text-center") Already have an account?
                         a(href="signin", class="ml-2 underline text-blue-500 hover:text-blue-300") Sign In
 
