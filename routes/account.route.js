@@ -32,15 +32,19 @@ router.post('/signup', (req, res) => {
         }
     })
 
-    return generateAccessToken(user.local.username)
+    return res.redirect('signin')
 })
 
 router.get('/signin', (req, res) => {
-    console.log(res)
     return res.render('account/entry/sign_in')
 })
 
-router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/signin'}))
+router.post('/signin', passport.authenticate('local', {
+    failureRedirect: '/account/signin',
+    failureMessage: true
+}), (req, res) => {
+    return res.redirect(`/user/${req.user.local.username}`)
+})
 
 router.use('/user', require('./user.route'))
 
