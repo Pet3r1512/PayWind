@@ -4,7 +4,4 @@
 
 [DB](https://docs.google.com/spreadsheets/d/1UuSeuvg--16YQeLrHvWv5boJNH5H_eBPoE8phm_mzDo/edit?usp=sharing)
 
-## Contributors' Role: 
 
-1. **[Thanh Phong](https://github.com/Pet3r1512)**: Repo Owner, Designer, Front-end Dev.
-2. **[Dinh Khoi](https://github.com/lekhoi2709)**: Full-stack Dev
