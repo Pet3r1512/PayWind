@@ -48,6 +48,10 @@ router.post('/signin', passport.authenticate('local', {
 
 router.use('/user', require('./user.route'))
 
+router.get('/change-password', (req, res) => {
+    return res.render('account/user/change_password')
+})
+
 router.get('/email/isExisted/:email', userController.isExisted)
 
 module.exports = router
