@@ -3,6 +3,9 @@ function show_pass() {
     var passConfirm = document.getElementById('confirm_pass')
     var eyeOn = document.getElementsByClassName('eye-on')
     var eyeOff = document.getElementsByClassName('eye-off')
+    
+    let new_pass = document.getElementById('new_pass_input')
+    let confirm_new_pass = document.getElementById('confirm_new_password')
 
     if (passConfirm) {
         if (passConfirm.type == "password") {
