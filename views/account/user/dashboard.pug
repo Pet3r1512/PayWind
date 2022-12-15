@@ -1,4 +1,10 @@
 doctype html
+//- - var profile_detail_labels = [
+//-    "Full Name", "Email", "Phone Number", "Gender", "Address", "Birthday"
+//- ];
+//- - var demo_user = [
+//-    "John Doe", "johnDoe@example.mail.com", "076 268 2712", "Gentle", "California, US", "15/12/2002"
+//- ];
 html(lang="en")
    head
       meta(charset="UTF-8")
@@ -7,7 +13,7 @@ html(lang="en")
       title PayWind | Dashboard
       link(rel="icon" href="/images/Logomark.png")
       link(rel="stylesheet", href="/css/style.min.css", type="text/css")
-
+      include ../../assets/layouts/_statusBar.pug  
    body
       div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
          include ../../assets/layouts/header.pug
@@ -15,6 +21,10 @@ html(lang="en")
             section(class="profile-detail font-sourcepro")
                h1(class="font-semibold text-[25px] md:text-[34px]") Profile Details 
                div(class="grid md:grid-cols-2 gap-6 mt-4 md:mt-8")
+                  //- each item in ["Full Name", "Email", "Phone Number", "Gender", "Address", "Birthday"]
+                  //-    label(for="name")= item
+                  //- each info in ["John Doe", "johnDoe@example.mail.com", "076 268 2712", "Gentle", "California, US", "15/12/2002"]
+                     p(class="flex gap-x-2 font-[700] text-[19px]")= info
                   div(class="flex gap-x-2 font-[700] text-[19px]")
                      label(for="name") Fullname:
                      p(class="text-[#1570EF]") John Doe
@@ -34,6 +44,9 @@ html(lang="en")
                      label(for="name") Birthday:
                      p(class="text-[#1570EF]") 15/12/2002
                         
-            div(class="flex flex-col items-center mb-8") 
+            div(class="flex flex-col items-center mb-8 gap-y-6") 
                include ../../assets/layouts/_creditCard.pug
                include ../../assets/layouts/_summary.pug
+               div(class="flex flex-col items-end md:mt-14 gap-4 md:gap-12") 
+                  +status('ready')
+                  a(href="#", class="font-bold text-blue-600 text-[20px] text-center mx-auto") Update Information
