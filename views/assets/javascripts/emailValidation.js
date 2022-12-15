@@ -9,10 +9,10 @@ async function emailValidation() {
         submit.disabled = false
         submit.style.backgroundColor = "rgb(99, 102, 241)"
     } else {
-        // const dtbLink = `http://paywind.up.railway.app/account/email/isExisted/${email.value}`
-        const dtbLink = `http://localhost:3000/account/email/isExisted/${email.value}`
+        // const apiLink = `http://paywind.up.railway.app/account/email/isExisted/${email.value}`
+        const apiLink = `http://localhost:3000/account/email/isExisted/${email.value}`
 
-        const res = await (await fetch(dtbLink)).json()
+        const res = await (await fetch(apiLink)).json()
 
         if(res.isExisted == false && (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value))){
             emailError.innerHTML = "This email address is available"
