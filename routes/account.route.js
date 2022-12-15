@@ -50,6 +50,12 @@ router.get('/change-password', (req, res) => {
     return res.render('account/user/change_password')
 })
 
+router.post('/change-password', (req, res) => {
+    const curr_pass = req.body.current_password
+    const new_pass = req.body.new_password
+    const confirm_pass = req.body.confirm_password
+})
+
 router.get('/email/isExisted/:email', userController.isExisted)
 
 module.exports = router
