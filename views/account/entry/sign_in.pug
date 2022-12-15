@@ -12,6 +12,8 @@ html(lang="en")
       link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
       link(href='https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap' rel='stylesheet')
       link(href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet")
+      script
+         include ../../assets/javascripts/theme.js
       block script
          script
             include ../../assets/javascripts/show_pass.js
@@ -43,5 +45,5 @@ html(lang="en")
       footer(class="bg-blue-500 h-fit border border-t-[1px] border-blue-500 w-full fixed bottom-0 flex justify-between items-center")
          p(class="p-2 text-white text-sm") &#169 2022 PayWind.All Rights Reserved | Design by SVTDTU
          label(class="inline-flex items-center cursor-pointer")
-            input(type="checkbox", name="toggle", id="toggle", class="sr-only peer", onclick="toggleMode()" checked)
+            input(type="checkbox", name="toggle", id="toggle", class="sr-only peer", onclick="toggleMode()")
             div(class="w-8 h-4 rounded-full dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-gray-700 peer-checked:after:bg-gray-600 after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-white")

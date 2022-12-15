@@ -1,5 +1,5 @@
 function toggleMode(){
-    var toggle = document.getElementById("toggle").checked
+    var toggle = document.getElementById("toggle")
     var body = document.getElementById("body")
     var form = document.getElementById("form")
     var email = document.getElementById("email")
@@ -7,7 +7,9 @@ function toggleMode(){
     var username = document.getElementById("username")
     var passConfirm = document.getElementById("confirm_pass")
 
-    if(toggle == false){
+    if(toggle.checked == false){
+        window.localStorage.setItem('theme', 'dark');
+
         body.style.backgroundColor = "#181818"
         body.style.transitionDuration ="300ms"
         form.style.backgroundColor="#282828"
@@ -26,6 +28,7 @@ function toggleMode(){
             passConfirm.style.borderColor = "#282828"
         }
     } else {
+        window.localStorage.setItem('theme', 'light');
         body.style.backgroundColor = "#E1E5E8"
         body.style.transitionDuration ="300ms"
         form.style.backgroundColor="#FFFFFF"
