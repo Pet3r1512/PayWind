@@ -4,42 +4,36 @@ html(lang="en")
       meta(charset="UTF-8")
       meta(http-equiv="X-UA-Compatible", content="IE=edge")
       meta(name="viewport", content="width=device-width, initial-scale=1.0")
-      title Profile
-      link(rel="stylesheet", href="/css/style.css", type="text/css")
+      title PayWind | Dashboard
+      link(rel="icon" href="/images/Logomark.png")
+      link(rel="stylesheet", href="/css/style.min.css", type="text/css")
 
-   body(class="h-screen leading-relaxed flex flex-col m-6")
-      div(class="container max-w-[1440px] mx-auto")
-         //intro
-         div(class="flex justify-between")
-            div(class="text-left")
-               p Welcome
-               h1(class="text-2xl font-semibold") Dashboard
-            p(class="text-right") #{id}
-
-         //wallet box
-         div(class="mt-4 sm:my-4 sm:flex sm:justify-between")
-            //wallet details
-            div(class="pt-4 pl-6 border border-black rounded-2xl w-full flex flex-col sm:w-[820px]")
-               p(class="mb-4") Wallet details
-               div(class="border border-black rounded-2xl p-4 mr-6")
-                  p Your balance:
-                  p #money
-                  p #card
-               div(class="flex my-4")
-                  p Cards
-                  p(class="ml-2 border rounded-md bg-gray-500 text-white text-xs w-fit h-fit p-1 px-2") #{card_count}
-               div(class="flex flex-col sm:flex-row sm:flex-wrap")
-                  each item in cards
-                     div(class="mb-6 p-4 border border-black rounded-2xl sm:w-[240px] mr-6 hover:cursor-pointer hover:bg-slate-100 ease-in-out delay-75 hover:scale-105 duration-300")
-                        p=item.name
-                        p=item.id
-                        div(class="border-0 border-t-2 w-full")
-                           p=item.exp
-                  div(class="mb-6 p-4 border border-dashed border-black rounded-2xl sm:w-[240px] mr-6 text-center hover:cursor-pointer hover:bg-slate-100 ease-in-out delay-75 hover:scale-105 duration-300")
-                     p(class="relative sm:top-[50%] sm:translate-y-[-50%]") Add card
-            //card details
-            div(class="mt-4 sm:ml-6 sm:mt-0 p-4 px-6 border border-black rounded-2xl sm:w-[550px]")
-               div(class="w-1/2 items-center")
-                  p Card details
-         div(class="mt-4 p-4 border border-black rounded-2xl")
-            p Status
+   body
+      div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
+         include ../../assets/layouts/header.pug
+         div(class="flex flex-col-reverse lg:flex-row justify-between my-8 md:mt-16")
+            section(class="profile-detail font-sourcepro")
+               h1(class="font-semibold text-[25px] md:text-[34px]") Profile Details 
+               div(class="grid md:grid-cols-2 gap-6 mt-4 md:mt-8")
+                  div(class="flex gap-x-2 font-[700] text-[19px]")
+                     label(for="name") Fullname:
+                     p(class="text-[#1570EF]") John Doe
+                  div(class="flex gap-x-2 font-[700] text-[19px]")
+                     label(for="name") Email:
+                     p(class="text-[#1570EF]") johnDoe@example.mail.com
+                  div(class="flex gap-x-2 font-[700] text-[19px]")
+                     label(for="name") Phone number:
+                     p(class="text-[#1570EF]") 076 268 2712
+                  div(class="flex gap-x-2 font-[700] text-[19px]")
+                     label(for="name") Gender:
+                     p(class="text-[#1570EF]") Gentle
+                  div(class="flex gap-x-2 font-[700] text-[19px]")
+                     label(for="name") Address:
+                     p(class="text-[#1570EF]") California, US
+                  div(class="flex gap-x-2 font-[700] text-[19px]")
+                     label(for="name") Birthday:
+                     p(class="text-[#1570EF]") 15/12/2002
+                        
+            div(class="flex flex-col items-center mb-8") 
+               include ../../assets/layouts/_creditCard.pug
+               include ../../assets/layouts/_summary.pug
