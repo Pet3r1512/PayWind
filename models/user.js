@@ -7,7 +7,22 @@ var userSchema = mongoose.Schema({
             type: String,
             unique: true,
         },
-        password: String
+        password: String,
+        phoneNumber: {
+            type: String,
+            unique: true,
+            default: null
+        },
+        address: {
+            type: String,
+            unique: true,
+            default: null
+        },
+        idCardNumber: {
+            type: [String],
+            default: null
+        },
+        idVerified: Boolean
     },
 })
 
