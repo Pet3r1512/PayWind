@@ -46,8 +46,6 @@ router.post('/signin', passport.authenticate('local', {
     return res.redirect(`/user/${req.user.local.username}`)
 })
 
-router.use('/user', require('./user.route'))
-
 router.get('/change-password', (req, res) => {
     return res.render('account/user/change_password')
 })
