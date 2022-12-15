@@ -31,6 +31,8 @@ html(lang="en")
                      span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
                         include ../../../public/icons/eye-outline.svg
                         include ../../../public/icons/eye-off-outline.svg
+                  if message != ''
+                     p(class="pt-2 pl-2 m-0 text-red-500") #{message}
                   input(type="submit" id="submit" value="Sign In" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-blue-500 text-white ease-in-out delay-100 hover:bg-blue-700 hover:-translate-y-1.5 hover:scale-105 duration-300 border-[#282828]")
                p(class="text-center py-4") -- Or sign in with --
                   div(class="flex justify-center items-center gap-6")
