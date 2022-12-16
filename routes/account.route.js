@@ -5,6 +5,15 @@ const saltRounds = 10
 const bcrypt = require("bcrypt")
 const User = require('../models/user')
 const userController = require('../api/userController')
+const nodemailer = require('nodemailer')
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: "paywindco@gmail.com",
+        pass: 'qajgkddhxtxivgmd'
+    }
+})
 
 function generateAccessToken(username) {
     return jwt.sign({ "user": username }, process.env.TOKEN_SECRET, { expiresIn: '1800s' })
@@ -23,11 +32,34 @@ function addUser(username, fullname, password, dob, email, phoneNumber, address,
             user.local.phoneNumber =phoneNumber
             user.local.address = address
 
-            user.save(function(err, result){
+            const mailOptions = {
+                from: "paywindco@gmail.com",
+                to: `${email}`,
+                subject: "Welcome To PayWind",
+                html: `
+                    <h1>Hello ${fullname},</h1> \n
+                    <p>Welcome to PayWind, With PayWind E-Wallet, you will no longer worry about your money because Safe, Accurate, and Fast is our main considerations.</p> \n
+                    <p>This is your account infomation:</p> \n
+                    <p>Username: <b>${username}</b></p>\n
+                    <p>Password: <b>${password}</b></p>
+                    <p>Never give your account password to anyone else!</p>
+                    `
+            }
+
+            transporter.sendMail(mailOptions, function(err, info){
                 if(err){
-                    return res.redirect('signup')
+                    return res.render('account/entry/error', { err: err })
                 }
-                return res.redirect('signin')
+                else {
+                    user.save(function(err, result){
+                        if(err){
+                            return res.render('account/entry/error', { err: err })
+                        }
+                        else {
+                            return res.render('account/entry/successful')
+                        }
+                    })
+                }
             })
         }
     })
