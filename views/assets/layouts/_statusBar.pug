@@ -1,0 +1,11 @@
+mixin status(status)
+    case status
+        when 'ready'
+            div(class="bg-[#00C851BF] flex items-center justify-center px-2 rounded-[15px] text-white font-semibold text-[12px] md:text-[18px] w-fit h-[30px] md:h-[54px] text-center") 
+                p Your profile is ready for all features on PayWind
+        when 'pending'
+            div(class="bg-[#FFBB33] flex items-center justify-center px-2 rounded-[15px] text-white font-semibold text-[12px] md:text-[18px] w-fit h-[30px] md:h-[54px] text-center") 
+                p Please verifiying your profile for further features
+        when 'blocked'  
+            div(class="bg-[#FF4444] flex items-center justify-center px-2 rounded-[15px] text-white font-semibold text-[12px] md:text-[18px] w-fit h-[30px] md:h-[54px] text-center") 
+                p Your profile has been disable due to unusal activities
