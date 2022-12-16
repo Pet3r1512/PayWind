@@ -36,13 +36,16 @@ router.post('/signup', (req, res) => {
 })
 
 router.get('/signin', (req, res) => {
-    return res.render('account/entry/sign_in')
+    const err_message = req.flash("err_message")
+    return res.render('account/entry/sign_in', { message: err_message })
 })
 
 router.post('/signin', passport.authenticate('local', {
     failureRedirect: '/account/signin',
-    failureMessage: true
+    failureMessage: true,
+    failureFlash: true
 }), (req, res) => {
+
     return res.redirect(`/user/${req.user.local.username}`)
 })
 

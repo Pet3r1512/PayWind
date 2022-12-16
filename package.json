@@ -12,6 +12,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.12",
     "bcrypt": "^5.1.0",
+    "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
@@ -23,6 +24,7 @@
     "postcss": "^8.4.17",
     "postcss-cli": "^10.0.0",
     "pug": "^3.0.2",
+    "req-flash": "^0.0.3",
     "tailwindcss": "^3.1.8",
     "uuid": "^9.0.0"
   },

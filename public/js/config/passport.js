@@ -19,18 +19,16 @@ passport.deserializeUser(function(id, done){
 passport.use(new localStrategy({
     usernameField: 'email',
     passwordField: 'password',
-}, function(username, password, done){
+    passReqToCallback: true
+}, function(req, username, password, done){
     User.findOne({ "local.email": username }, function(err, user){
         if(err){
             return done(err)
         }
 
-        if(!user){
-            return done(null, false, { message: "Incorrect username" })
-        }
-
-        if(!(bcrypt.compareSync(password, user.local.password))){
-            return done(null, false, { message: "Incorrect password" })
+        if(!user || !(bcrypt.compareSync(password, user.local.password))){
+            req.flash("err_message", "Incorrect username or password")
+            return done(null, false, { message: "Incorrect username or password" })
         }
 
         return done(null, user)
