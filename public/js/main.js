@@ -6,7 +6,7 @@ const path = require('path');
 const mongoose = require("mongoose")
 const MongoStore = require('connect-mongo');
 require("dotenv").config()
-
+const flash = require('connect-flash')
 
 app.locals.basedir = path.join(__dirname, '../')
 app.set('views', path.join(__dirname, '../../views'));
@@ -23,6 +23,7 @@ app.use(session({
 	cookie: {},
 	store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL })
 }))
+app.use(flash())
 
 app.use(passport.initialize())
 app.use(passport.session())
