@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="icon" href="/images/Logomark.png")
+        meta(http-equiv="Content-Security-Policy" content="upgrade-insecure-requests")
+        title PayWind | Features
+        link(rel="stylesheet", href="/css/style.min.css", type="text/css")
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+        link(href='https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap' rel='stylesheet')
+        link(href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet")
+    
+    body 
+        div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
+            div
+                include ../../../assets/layouts/header.pug
+            div(class="inline-grid  grid-cols-2 lg:grid-cols-4 lg:grid-row-2 gap-6 mt-8 lg:mt-32")
+                include ../../../assets/layouts/_featuresItem.pug
+            
