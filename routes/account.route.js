@@ -13,19 +13,23 @@ function generateAccessToken(username) {
 function addUser(username, fullname, password, dob, email, phoneNumber, address, res) {
     const user = new User()
 
-    user.local.username = username
-    user.local.fullname = fullname
-    user.local.password = password
-    user.local.dateOfBirth = dob
-    user.local.email = email
-    user.local.phoneNumber =phoneNumber
-    user.local.address = address
+    bcrypt.hash(password, saltRounds, function(err, hash){
+        if(hash){
+            user.local.password = hash
+            user.local.username = username
+            user.local.fullname = fullname
+            user.local.dateOfBirth = dob
+            user.local.email = email
+            user.local.phoneNumber =phoneNumber
+            user.local.address = address
 
-    user.save(function(err, result){
-        if(err){
-            return res.redirect('signup')
+            user.save(function(err, result){
+                if(err){
+                    return res.redirect('signup')
+                }
+                return res.redirect('signin')
+            })
         }
-        return res.redirect('signin')
     })
 }
 
@@ -35,7 +39,6 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', (req, res) => {
     let data = req.body
-
 
     let dobStr = data.dob.split("-")
     let dobStrJoin = dobStr[2] + dobStr[1] + dobStr[0].slice(2)
