@@ -21,10 +21,10 @@ html(lang="en")
             include ../../assets/javascripts/toggleMode.js
 
     body(class="w-screen h-screen bg-[#E1E5E8] flex flex-col", id="body")
-        div(class="flex flex-col flex-1 items-center")
+        div(class="flex flex-col flex-1 items-center h-screen")
             include ../../assets/layouts/_logo.pug
 
-            form(method='post', id="form", class="flex flex-col md:w-1/2 md:max-w-md md:px-0 md:gap-4 h-fit border border-slate-300 px-8 py-12 rounded-[1.5rem] gap-6 bg-white justify-center items-center shadow-lg")
+            form(method='post', id="form", class="flex flex-col md:w-2/3 md:max-w-[400px] md:px-0 md:gap-4 h-fit border border-slate-300 px-8 py-12 rounded-[1.5rem] gap-6 bg-white justify-center items-center shadow-lg")
                 div(class="flex flex-col w-full px-8")
                     p(class="font-semibold text-[30px] md:mb-12 mb-10 text-center font-kanit") Sign Up
                     div(class="flex flex-col gap-y-6 font-sourcepro")
@@ -49,9 +49,4 @@ html(lang="en")
                         button(onClick="check_create_account()" value="Create Account" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-blue-500 text-white ease-in-out delay-100 hover:bg-blue-700 hover:-translate-y-1.5 hover:scale-105 duration-300 border-[#282828]", id="submit") Create Account
                     p(class="mt-4 text-center") Already have an account?
                         a(href="signin", class="ml-2 underline text-blue-500 hover:text-blue-300") Sign In
-        footer(class="bg-blue-500 h-fit border border-t-[1px] border-blue-500 w-full fixed bottom-0 flex justify-between items-center")
-            p(class="p-2 text-white text-sm") &#169 2022 PayWind.All Rights Reserved | Design by SVTDTU
-
-            label(class="inline-flex items-center cursor-pointer")
-                input(type="checkbox", name="toggle", id="toggle", class="sr-only peer", onclick="toggleMode()" checked)
-                div(class="w-8 h-4 rounded-full dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-gray-700 peer-checked:after:bg-gray-600 after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-white")
+        include ../../assets/layouts/footer.pug
