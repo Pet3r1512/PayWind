@@ -1,16 +1,7 @@
 function show_pass() {
-    var pass = document.getElementById('pass_input')
-    var passConfirm = document.getElementById('confirm_pass')
+    var pass = document.getElementById('pass')
     var eyeOn = document.getElementsByClassName('eye-on')
     var eyeOff = document.getElementsByClassName('eye-off')
-
-    if (passConfirm) {
-        if (passConfirm.type == "password") {
-            passConfirm.type = "text"
-        } else {
-            passConfirm.type = "password"
-        }
-    }
 
     if (pass.type == "password") {
         pass.type = "text"

@@ -1,0 +1,14 @@
+div
+   div(class="relative")
+      input(type="password", placeholder="Password", name="password", class="border border-slate-400 p-2 pl-4 rounded-md w-full", id="pass_input" oninput="passRegEx()" required)
+      span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
+         include ../../../public/icons/eye-outline.svg
+         include ../../../public/icons/eye-off-outline.svg
+   p(id="pass_regEx" class="pt-2 pl-2 m-0 hidden h-fit")
+   div
+      div(class="relative")
+         input(type="password", placeholder="Confirm Password", name="confirm_password", class="border border-slate-400 p-2 pl-4 rounded-md w-full", id="confirm_pass" oninput="passValidation()" required)
+         span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
+            include ../../../public/icons/eye-outline.svg
+            include ../../../public/icons/eye-off-outline.svg
+      p(id="pass_valid" class="pt-2 pl-2 m-0 hidden h-fit")

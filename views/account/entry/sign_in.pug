@@ -12,6 +12,8 @@ html(lang="en")
       link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
       link(href='https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap' rel='stylesheet')
       link(href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet")
+      script
+         include ../../assets/javascripts/theme.js
       block script
          script
             include ../../assets/javascripts/show_pass.js
@@ -27,7 +29,7 @@ html(lang="en")
                div(class="flex flex-col gap-y-6 font-sourcepro")
                   input(type="text", placeholder="Email" name="email" id="email" class="border border-slate-400 p-2 rounded-md pl-4")
                   div(class="relative")
-                     input(type="password", placeholder="Password", name="password" class="border border-slate-400 pl-4 p-2 rounded-md w-full", id="pass_input" required)
+                     input(type="password", placeholder="Password", name="password" class="border border-slate-400 pl-4 p-2 rounded-md w-full", id="pass" required)
                      span(type="icon" class="absolute right-2 top-1/2 translate-y-[-50%] hover:cursor-pointer", id="passIcon", onclick="show_pass()")
                         include ../../../public/icons/eye-outline.svg
                         include ../../../public/icons/eye-off-outline.svg
