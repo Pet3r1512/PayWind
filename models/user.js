@@ -2,12 +2,14 @@ const mongoose = require("mongoose")
 
 var userSchema = mongoose.Schema({
     local: {
+        userId: String,
         username: String,
+        password: String,
+        dateOfBirth: Date,
         email: {
             type: String,
             unique: true,
         },
-        password: String,
         phoneNumber: {
             type: String,
             unique: true,
@@ -22,7 +24,7 @@ var userSchema = mongoose.Schema({
             type: [String],
             default: null
         },
-        idVerified: Boolean
+        isVerified: Boolean
     },
 })
 
