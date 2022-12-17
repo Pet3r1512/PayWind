@@ -11,6 +11,7 @@ html(lang="en")
         div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
             div
                 include ../../../assets/layouts/header.pug
+                +header(username)
             div(class="flex flex-col-reverse md:items-center lg:items-start lg:flex-row justify-between my-8 md:mt-16")
                 section(class="profile-detail font-sourcepro w-full md:w-[80%] lg:w-[40%]")
                     h1(class="font-semibold text-[25px] md:text-[34px] relative md:left-[-50px] lg:left-0") Recharge Details 
