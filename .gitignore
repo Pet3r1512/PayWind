@@ -2,5 +2,5 @@ node_modules
 package-lock.json
 yarn-lock.json
 ./public/styles/style.css
-./public/styles/style.min.css
+./public/css/style.min.css
 .env
