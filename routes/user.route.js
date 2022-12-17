@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const User = require('../models/user')
 
 var card = [
     {
@@ -26,11 +27,28 @@ var card = [
 ]
 
 router.get('/:id', (req, res) => {
-    return res.render('account/user/dashboard', {
-        id: req.params.id,
-        cards: card,
-        card_count: card.length
-    })
+    if(req.session.passport != undefined){
+        const data = req.session.passport.user
+
+        User.findOne({ _id: data }, function(err,result){
+            if(err){
+                console.log(err)
+            } else {
+                const userData = result.local
+                const dob = new Date(userData.dateOfBirth).toLocaleDateString("en-GB")
+                return res.render('account/user/dashboard', {
+                    username: userData.username,
+                    fullname: userData.fullname,
+                    email: userData.email,
+                    phoneNumber: userData.phoneNumber,
+                    address: userData.address,
+                    dob: dob
+                })
+            }
+        })
+    } else {
+        return res.redirect('/')
+    }
 })
 
 module.exports = router

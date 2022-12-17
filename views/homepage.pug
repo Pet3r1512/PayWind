@@ -6,10 +6,10 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
     title PayWind
     link(rel="icon" href="/images/Logomark.png")
-    link(href="/css/style.css", rel="stylesheet")
+    link(href="/css/style.min.css", rel="stylesheet")
   body
     div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
-      div
-        include ../views/assets/layouts/header.pug
+      include ../views/assets/layouts/header.pug
+      +header(username)
       div(class="flex-1")
         include ../views/assets/layouts/hero.pug

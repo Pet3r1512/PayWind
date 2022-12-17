@@ -7,36 +7,34 @@ html(lang="en")
       title PayWind | Dashboard
       link(rel="icon" href="/images/Logomark.png")
       link(rel="stylesheet", href="/css/style.min.css", type="text/css")
-      include ../../assets/layouts/_statusBar.pug  
+      include ../../assets/layouts/_statusBar.pug
    body
       div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
          include ../../assets/layouts/header.pug
+         +header(username)
          div(class="flex flex-col-reverse lg:flex-row justify-between my-8 md:mt-16")
             section(class="profile-detail font-sourcepro")
-               h1(class="font-semibold text-[25px] md:text-[34px]") Profile Details 
+               h1(class="font-semibold text-[25px] md:text-[34px]") Profile Details
                div(class="grid md:grid-cols-2 gap-6 mt-4 md:mt-8")
                   div(class="flex gap-x-2 font-[700] text-[19px]")
                      label(for="name") Fullname:
-                     p(class="text-[#1570EF]") John Doe
+                     p(class="text-[#1570EF]") #{fullname}
                   div(class="flex gap-x-2 font-[700] text-[19px]")
                      label(for="name") Email:
-                     p(class="text-[#1570EF]") johnDoe@example.mail.com
+                     p(class="text-[#1570EF]") #{email}
                   div(class="flex gap-x-2 font-[700] text-[19px]")
                      label(for="name") Phone number:
-                     p(class="text-[#1570EF]") 076 268 2712
-                  div(class="flex gap-x-2 font-[700] text-[19px]")
-                     label(for="name") Gender:
-                     p(class="text-[#1570EF]") Gentle
-                  div(class="flex gap-x-2 font-[700] text-[19px]")
-                     label(for="name") Address:
-                     p(class="text-[#1570EF]") California, US
+                     p(class="text-[#1570EF]") #{phoneNumber}
                   div(class="flex gap-x-2 font-[700] text-[19px]")
                      label(for="name") Birthday:
-                     p(class="text-[#1570EF]") 15/12/2002
-                        
-            div(class="flex flex-col items-center mb-4 md:mb-8 gap-y-6") 
+                     p(class="text-[#1570EF]") #{dob}
+                  div(class="flex gap-x-2 font-[700] text-[19px]")
+                     label(for="name") Address:
+                     p(class="text-[#1570EF]") #{address}
+
+            div(class="flex flex-col items-center mb-4 md:mb-8 gap-y-6")
                include ../../assets/layouts/_creditCard.pug
                include ../../assets/layouts/_summary.pug
-               div(class="flex flex-col items-end md:mt-14 gap-4 md:gap-12") 
+               div(class="flex flex-col items-end md:mt-14 gap-4 md:gap-12")
                   +status('ready')
                   a(href="#", class="font-bold text-blue-600 text-[20px] text-center mx-auto") Update Information

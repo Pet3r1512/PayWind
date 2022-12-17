@@ -18,6 +18,7 @@ html(lang="en")
             script
                 include ../../assets/javascripts/show_pass.js
                 include ../../assets/javascripts/emailValidation.js
+                include ../../assets/javascripts/phoneValidation.js
                 include ../../assets/javascripts/toggleMode.js
 
     body(class="w-screen h-screen bg-[#E1E5E8] flex flex-col overflow-x-hidden", id="body")
@@ -28,13 +29,15 @@ html(lang="en")
                 div(class="flex flex-col w-full px-8")
                     p(class="font-semibold text-[30px] md:mb-12 mb-10 text-center font-kanit") Sign Up
                     div(class="flex flex-col gap-y-6 font-sourcepro")
-                        input(type="text", placeholder="Fullname" id="fullname" name="fullname" class="border border-slate-400 p-2 pl-4 rounded-md")
+                        input(type="text", placeholder="Fullname" id="fullname" name="fullname" class="border border-slate-400 p-2 pl-4 rounded-md" required)
                         div
-                            input(type="email", placeholder="Email" id="email" name="email" class="border border-slate-400 p-2 pl-4 rounded-md w-full" oninput="emailValidation()")
+                            input(type="email", placeholder="Email" id="email" name="email" class="border border-slate-400 p-2 pl-4 rounded-md w-full" oninput="emailValidation()" required)
                             p(id="emailError" class="pt-2 pl-2 m-0 hidden h-fit")
-                        input(type="text", placeholder="Phone number" id="phoneNumber" name="phoneNumber" class="border border-slate-400 p-2 pl-4 rounded-md")
-                        input(type="date", placeholder="Date of Birth" id="dob" name="dob" class="border border-slate-400 p-2 pl-4 rounded-md")
-                        input(type="text", placeholder="Address" id="address" name="address" class="border border-slate-400 p-2 pl-4 rounded-md")
+                        div
+                            input(type="tel", placeholder="Phone number" id="phoneNumber" name="phoneNumber" class="border border-slate-400 p-2 pl-4 rounded-md w-full" oninput="phoneValidation()" required)
+                            p(id="phoneError" class="pt-2 pl-2 m-0 hidden h-fit")
+                        input(type="date", placeholder="Date of Birth" id="dob" name="dob" class="border border-slate-400 p-2 pl-4 rounded-md" required)
+                        input(type="text", placeholder="Address" id="address" name="address" class="border border-slate-400 p-2 pl-4 rounded-md" required)
                         button(onClick="check_create_account()" value="Create Account" class="border h-fit px-4 py-2 rounded-md my-2 cursor-pointer bg-blue-500 text-white ease-in-out delay-100 hover:bg-blue-700 hover:-translate-y-1.5 hover:scale-105 duration-300 border-[#282828]", id="submit") Create Account
                     p(class="mt-4 text-center") Already have an account?
                         a(href="signin", class="ml-2 underline text-blue-500 hover:text-blue-300") Sign In

@@ -109,12 +109,24 @@ router.post('/signin', passport.authenticate('local', {
     failureMessage: true,
     failureFlash: true
 }), (req, res) => {
-
+    if(req.user.local.username == "admin"){
+        return res.redirect('/admin')
+    }
     return res.redirect(`/user/${req.user.local.username}`)
+})
+
+router.get('/signout', (req, res) => {
+    req.session.destroy(function(err){
+        if(err){
+            console.log(err)
+        }
+        return res.redirect('/')
+    })
 })
 
 router.use('/user', require('./user.route'))
 
 router.get('/email/isExisted/:email', userController.isExisted)
+router.get('/phone/isExisted/:phoneNumber', userController.phoneIsExisted)
 
 module.exports = router
