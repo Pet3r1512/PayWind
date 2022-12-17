@@ -21,7 +21,7 @@ app.use(session({
 	secret: "pay pay pay",
 	resave: false,
 	saveUninitialized: false,
-	cookie: {},
+	cookie: { maxAge: 5 * 60 * 1000, httpOnly: true },
 	store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL })
 }))
 app.use(flash())
@@ -47,21 +47,7 @@ app.get('/', (req, res) => {
 });
 
 // Test admin page
-app.get('/admin', (req, res) => {
-    if(req.session.passport != undefined){
-        const data = req.session.passport.user
-
-        User.findOne({ _id: data }, function(err,result){
-            if(err){
-                console.log(err)
-            } else {
-                return res.render('account/admin/admin', { username: result.local.username})
-            }
-        })
-    } else {
-        return res.redirect('/')
-    }
-})
+app.use('/admin', require('../../routes/admin.route.js'))
 
 app.use('/account', require('../../routes/account.route.js'))
 

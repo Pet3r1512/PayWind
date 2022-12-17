@@ -7,9 +7,30 @@ html(lang="en")
       title PayWind | Admin
       link(rel="icon" href="/images/Logomark.png")
       link(href="/css/style.min.css", rel="stylesheet")
+      block script
+         script
+
    body
       div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
          include ../../assets/layouts/header.pug
          +header(username)
          div
             p This is admin page
+            table(class="table-auto gap-4")
+               thead
+                  tr
+                     th(class="bg-gray-400 border text-left px-8 py-4") Username
+                     th(class="bg-gray-400 border text-left px-8 py-4") Full Name
+                     th(class="bg-gray-400 border text-left px-8 py-4") Email
+                     th(class="bg-gray-400 border text-left px-8 py-4") Phone
+                     th(class="bg-gray-400 border text-left px-8 py-4") Status
+               tbody
+                  for item in items
+                     tr
+                        td(class="border px-8 py-4") #{item.local.username}
+                        td(class="border px-8 py-4") #{item.local.fullname}
+                        td(class="border px-8 py-4") #{item.local.email}
+                        td(class="border px-8 py-4") #{item.local.phoneNumber}
+                        td(class="border px-8 py-4") #{item.local.isVerified}
+            button
+               a(href="admin/inactiveUser") Inactive User list
