@@ -7,12 +7,13 @@ document.onreadystatechange = function() {
 
         const body = document.getElementById("body")
         const form = document.getElementById("form")
-        const email = document.getElementById("email")
+        const username = document.getElementById("username")
         const password = document.getElementById("pass")
         const fullname = document.getElementById("fullname")
         const phoneNumber = document.getElementById("phoneNumber")
         const dob = document.getElementById("dob")
         const address = document.getElementById("address")
+        const email = document.getElementById("email")
 
         if(toggle.checked == false){
             body.style.backgroundColor = "#181818"
@@ -21,14 +22,15 @@ document.onreadystatechange = function() {
             form.style.color = "white"
             form.style.borderColor = "#282828"
 
-            email.style.backgroundColor = "#404040"
-            email.style.borderColor = "#282828"
-
-            if(password){
+            if(username && password){
+                username.style.backgroundColor = "#404040"
+                username.style.borderColor = "#282828"
                 password.style.backgroundColor = "#404040"
                 password.style.borderColor = "#282828"
             }
-            if(fullname && phoneNumber && dob && address){
+            if(email && fullname && phoneNumber && dob && address){
+                email.style.backgroundColor = "#404040"
+                email.style.borderColor = "#282828"
                 fullname.style.backgroundColor = "#404040"
                 fullname.style.borderColor = "#282828"
                 phoneNumber.style.backgroundColor = "#404040"
@@ -46,14 +48,15 @@ document.onreadystatechange = function() {
             form.style.color = "black"
             form.style.borderColor = "rgb(202, 213, 225)"
 
-            email.style.backgroundColor = "#FFFFFF"
-            email.style.borderColor = "rgb(202, 213, 225)"
-
-            if(password){
+            if(password && username){
+                username.style.backgroundColor = "#FFFFFF"
+                username.style.borderColor = "rgb(202, 213, 225)"
                 password.style.backgroundColor = "#FFFFFF"
                 password.style.borderColor = "rgb(202, 213, 225)"
             }
-            if(fullname && phoneNumber && dob && address){
+            if(email && fullname && phoneNumber && dob && address){
+                email.style.backgroundColor = "#FFFFFF"
+                email.style.borderColor = "rgb(202, 213, 225)"
                 fullname.style.backgroundColor = "#FFFFFF"
                 fullname.style.borderColor = "rgb(202, 213, 225)"
                 phoneNumber.style.backgroundColor = "#FFFFFF"

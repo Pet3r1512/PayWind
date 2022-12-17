@@ -21,7 +21,7 @@ passport.use(new localStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, function(req, username, password, done){
-    User.findOne({ "local.email": username }, function(err, user){
+    User.findOne({ "local.username": username }, function(err, user){
         if(err){
             return done(err)
         }
