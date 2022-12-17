@@ -65,6 +65,8 @@ app.get('/admin', (req, res) => {
 
 app.use('/account', require('../../routes/account.route.js'))
 
+app.use('/features', require('../../routes/features.route'))
+
 app.use('/user', require("../../routes/user.route"))
 
 // app.use((req, res) => {
