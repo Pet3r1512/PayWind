@@ -1,35 +1,50 @@
 const router = require('express').Router();
+const User = require("../models/user")
+
+function checkUser(req, res, link) {
+    if(req.session.passport != undefined) {
+        const data = req.session.passport.user
+        User.findOne({_id: data}, function(err, result) {
+            if(err) {
+                console.log(err)
+            }
+            return res.render(`../views/account/user/features/${link}`, { username: result.local.username})
+        })
+    }
+    else 
+        return res.redirect('/')
+}
 
 router.get('/', (req, res) => {
-    return res.render('../views/account/user/features/features.pug')
+    checkUser(req, res, "features.pug")
 })
 
 router.get('/transfer', (req, res) => {
-    return res.render('../views/account/user/features/transfer.pug')
+    checkUser(req, res, "transfer.pug")
 })
 
 router.get('/recharge', (req, res) => {
-    return res.render('../views/account/user/features/recharge.pug')
+    checkUser(req, res, "recharge.pug")
 })
 
 router.get('/withdraw', (req, res) => {
-    return res.render('../views/account/user/features/withdraw.pug')
+    checkUser(req, res, "withdraw.pug")
 })
 
 router.get('/buy_mobile_card', (req, res) => {
-    return res.render('../views/account/user/features/buy_mobile_card.pug')
+    checkUser(req, res, "buy_mobile_card.pug")
 })
 
 router.get('/history', (req, res) => {
-    return res.render('../views/account/user/features/history.pug')
+    checkUser(req, res, "history.pug")
 })
 
 router.get('/add-info', (req, res) => {
-    return res.render('../views/account/user/features/add-info.pug')
+    checkUser(req, res, "add-info.pug")
 })
 
 router.get('/change-password', (req, res) => {
-    return res.render('../views/account/user/features/change-password.pug')
+    checkUser(req, res, "change-password.pug")
 })
 
 module.exports = router
