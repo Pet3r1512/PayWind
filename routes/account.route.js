@@ -5,6 +5,15 @@ const saltRounds = 10
 const bcrypt = require("bcrypt")
 const User = require('../models/user')
 const userController = require('../api/userController')
+const nodemailer = require('nodemailer')
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: "paywindco@gmail.com",
+        pass: 'qajgkddhxtxivgmd'
+    }
+})
 
 function generateAccessToken(username) {
     return jwt.sign({ "user": username }, process.env.TOKEN_SECRET, { expiresIn: '1800s' })
@@ -13,19 +22,46 @@ function generateAccessToken(username) {
 function addUser(username, fullname, password, dob, email, phoneNumber, address, res) {
     const user = new User()
 
-    user.local.username = username
-    user.local.fullname = fullname
-    user.local.password = password
-    user.local.dateOfBirth = dob
-    user.local.email = email
-    user.local.phoneNumber =phoneNumber
-    user.local.address = address
+    bcrypt.hash(password, saltRounds, function(err, hash){
+        if(hash){
+            user.local.password = hash
+            user.local.username = username
+            user.local.fullname = fullname
+            user.local.dateOfBirth = dob
+            user.local.email = email
+            user.local.phoneNumber =phoneNumber
+            user.local.address = address
 
-    user.save(function(err, result){
-        if(err){
-            return res.redirect('signup')
+            const mailOptions = {
+                from: "paywindco@gmail.com",
+                to: `${email}`,
+                subject: "Welcome To PayWind",
+                html: `
+                    <h1>Hello ${fullname},</h1> \n
+                    <p>Welcome to PayWind, With PayWind E-Wallet, you will no longer worry about your money because Safe, Accurate, and Fast is our main considerations.</p> \n
+                    <p>This is your account infomation:</p> \n
+                    <p>Username: <b>${username}</b></p>\n
+                    <p>Password: <b>${password}</b></p>
+                    <p>Never give your account password to anyone else!</p>
+                    `
+            }
+
+            transporter.sendMail(mailOptions, function(err, info){
+                if(err){
+                    return res.render('account/entry/error', { err: err })
+                }
+                else {
+                    user.save(function(err, result){
+                        if(err){
+                            return res.render('account/entry/error', { err: err })
+                        }
+                        else {
+                            return res.render('account/entry/successful')
+                        }
+                    })
+                }
+            })
         }
-        return res.redirect('signin')
     })
 }
 
@@ -35,7 +71,6 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', (req, res) => {
     let data = req.body
-
 
     let dobStr = data.dob.split("-")
     let dobStrJoin = dobStr[2] + dobStr[1] + dobStr[0].slice(2)

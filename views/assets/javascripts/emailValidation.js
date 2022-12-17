@@ -9,8 +9,8 @@ async function emailValidation() {
         submit.disabled = false
         submit.style.backgroundColor = "rgb(99, 102, 241)"
     } else {
-        const apiLink = `http://paywind.up.railway.app/account/email/isExisted/${email.value}`
-        // const apiLink = `http://localhost:3000/account/email/isExisted/${email.value}`
+        // const apiLink = `http://paywind.up.railway.app/account/email/isExisted/${email.value}`
+        const apiLink = `http://localhost:3000/account/email/isExisted/${email.value}`
 
         const res = await (await fetch(apiLink)).json()
 
