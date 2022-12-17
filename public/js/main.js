@@ -7,6 +7,7 @@ const mongoose = require("mongoose")
 const MongoStore = require('connect-mongo');
 require("dotenv").config()
 const flash = require('connect-flash')
+const User = require('../../models/user')
 
 app.locals.basedir = path.join(__dirname, '../')
 app.set('views', path.join(__dirname, '../../views'));
@@ -30,12 +31,36 @@ app.use(passport.session())
 require('./config/passport')
 
 app.get('/', (req, res) => {
-	res.render('homepage');
+	if(req.session.passport != undefined){
+        const data = req.session.passport.user
+
+        User.findOne({ _id: data }, function(err,result){
+            if(err){
+                console.log(err)
+            } else {
+                return res.render('homepage', { username: result.local.username })
+            }
+        })
+    } else {
+        return res.render('homepage')
+    }
 });
 
 // Test admin page
 app.get('/admin', (req, res) => {
-	res.render('admin/admin')
+    if(req.session.passport != undefined){
+        const data = req.session.passport.user
+
+        User.findOne({ _id: data }, function(err,result){
+            if(err){
+                console.log(err)
+            } else {
+                return res.render('account/admin/admin', { username: result.local.username})
+            }
+        })
+    } else {
+        return res.redirect('/')
+    }
 })
 
 app.use('/account', require('../../routes/account.route.js'))
