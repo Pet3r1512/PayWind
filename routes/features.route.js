@@ -177,9 +177,9 @@ router.post('/change-password', (req, res) => {
                                         return res.send({ code: "update failed", msg: err })
                                     }
                                     else {
-                                        return res.send({code: "success", data: changepass_res})
-                                        // req.session.destroy()
-                                        // return res.redirect('/')
+                                        // return res.send({code: "success", data: changepass_res})
+                                        req.session.destroy()
+                                        return res.redirect('/')
                                     }
                                 })
                             }
