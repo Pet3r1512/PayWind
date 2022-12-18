@@ -6,19 +6,17 @@ html(lang="en")
       meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
       title PayWind | Admin
       link(rel="icon" href="/images/Logomark.png")
-      //- link(href="/css/style.min.css", rel="stylesheet")
-      //- link(rel="stylesheet", href="/css/style.min.css", type="text/css")
-      <script src="https://cdn.tailwindcss.com/"></script>
+      link(href="/css/style.min.css", rel="stylesheet")
       link(rel='preconnect' href='https://fonts.googleapis.com')
       link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
       link(href='https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap' rel='stylesheet')
       link(href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet")
    body
-      div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
+      div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col")
          include ../../assets/layouts/headerStatus.pug
          +header(username)
             //- create table four column username, email, created at, status
-         table.table-fixed
+         table(class="table-fixed lg:mt-16 font-sourcepro")
             thead(class="bg-gray-100 ")
                tr
                   th(class="py-4") Username
@@ -46,15 +44,3 @@ html(lang="en")
                   th(class="py-4") demoUsername@email.com
                   th(class="py-4") 2021-05-01
                   th(class="py-4") Banned   
-
-
-
-
-
-
-
-
-
-
-
-include ../../assets/layouts/footer.pug

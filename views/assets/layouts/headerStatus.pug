@@ -3,11 +3,11 @@ mixin header(user)
         div(class="flex justify-between items-center mt-[30px]")
             span(class="h-[40px] w-[40px] md:hidden")
                 include ../../../public/icons/menu.svg
-            a(href="/")
-                img(src="/images/main_logo.png", alt="PayWind", class="")
+            a(href="")
+                img(src="/images/LogoAdmin.png", alt="PayWind", class="")
             if user
                 div(class="hidden md:block")
-                    include ./_menuStatus.pug
+                    include ./_adminMenu.pug
                     +menu(user)
                 div(class="flex flex-col-reverse gap-2 items-center md:flex-row")
                     p #{user}
