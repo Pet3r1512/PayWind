@@ -1,4 +1,5 @@
 const User = require("../models/user")
+const History = require('../models/history')
 
 module.exports = {
     isExisted: (req, res) => {
@@ -48,4 +49,15 @@ module.exports = {
             return res.json(data)
         })
     },
+
+    incomeHistory: (req, res) => {
+        const username = req.params.username
+
+        History.find({ "usernameReceived": username }, 'usernameReceived phoneNumberReceived create_at money', function(err, result){
+            if(err){
+                return res.json(err)
+            }
+            return res.json(result)
+        })
+    }
 }

@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+   head
+      meta(charset="UTF-8")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      title PayWind | History
+      link(rel="icon" href="/images/Logomark.png")
+      link(rel="stylesheet", href="/css/style.min.css", type="text/css")
+   body(class="overflow-x-auto")
+      div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
+         include ../../../assets/layouts/header.pug
+         +header(username)
+
+         div(class="h-[500px] w-full overflow-auto mt-10")
+            table(class="table-fixed font-sourcepro w-full")
+               thead(class="bg-gray-100 sticky top-[-1px] z-[1]")
+                  tr
+                     th(class="bg-gray-400 border px-4 py-2 w-[200px] text-center") Username
+                     th(class="bg-gray-400 border px-8 py-4 w-[200px] text-center") Phone
+                     th(class="bg-gray-400 border px-8 py-4 w-[300px] text-center") Transaction at
+                     th(class="bg-gray-400 border px-8 py-4 w-[200px] text-center") Transaction Amount
+               tbody
+                  for item in items
+                     tr(class="h-[110px]")
+                        td(class="border px-4 py-2 w-[150px]") #{item.usernameReceived}
+                        td(class="border px-8 py-4 w-[150px]") #{item.phoneNumberReceived}
+                        td(class="border px-8 py-4 w-[150px]") #{item.create_at}
+                        td(class="border px-8 py-4 w-[150px]") #{item.money}
+
+      div(class="absolute bottom-0 w-full")
+         include ../../../assets/layouts/footer.pug
