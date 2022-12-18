@@ -1,12 +1,19 @@
 const mongoose = require("mongoose")
 
-const userAccountSchema = mongoose.Schema({
-    userId: String,
-    userPhoneNumber: String,
-    openedDay: Date,
-    expiredDay: Date,
-    balance: Number,
-    type: String
+const userWalletSchema = mongoose.Schema({
+    username: {
+        type: String,
+        unique: true
+    },
+    phoneNumber: {
+        type: String,
+        unique: true
+    },
+    idCardNumber: [String],
+    balance: {
+        type: Number,
+        default: 0
+    }
 })
 
-module.exports = mongoose.model("UserAccount", userAccountSchema)
+module.exports = mongoose.model("UserAccount", userWalletSchema)
