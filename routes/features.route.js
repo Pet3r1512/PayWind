@@ -7,8 +7,11 @@ const History = require('../models/history');
 const fetch = require('node-fetch')
 
 async function getIncomeHistory (username, callback){
-    const apiLink = `http://localhost:3000/features/getIncomeHistory/${username}`
-    // const apiLink = `http://paywind.up.railway.app/features/getIncomeHistory/${username}`
+    //Nếu chạy dự án ở local thì sử dụng dòng 12 thay cho dòng 13
+
+    // const apiLink = `http://localhost:3000/features/getIncomeHistory/${username}`
+    const apiLink = `http://paywind.up.railway.app/features/getIncomeHistory/${username}`
+    
     const response = await fetch(apiLink)
     .then(res => res.json())
     .then(data => callback(data))
