@@ -14,7 +14,7 @@ html(lang="en")
       div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
          include ../../assets/layouts/header.pug
          +header(username)
-         div
+         div(class="h-[500px] overflow-auto")
             table(class="table-fixed mt-6 ml-6 font-sourcepro")
                thead(class="bg-gray-100 ")
                   tr
@@ -24,9 +24,9 @@ html(lang="en")
                      th(class="bg-gray-400 border text-left px-8 py-4") Phone
                      th(class="bg-gray-400 border text-left px-8 py-4") Status
                      th(class="bg-gray-400 border text-left px-8 py-4") Action
-               tbody(class="h-0 flex-grow overflow-y-auto")
+               tbody    
                   for item in items
-                     tr(class="h-[110px]")
+                     tr(class="")
                         td(class="border px-8 py-4") #{item.local.username}
                         td(class="border px-8 py-4") #{item.local.fullname}
                         td(class="border px-8 py-4") #{item.local.email}
