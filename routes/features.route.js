@@ -1,7 +1,18 @@
 const router = require('express').Router();
+const userController = require('../api/userController')
 const User = require("../models/user")
 const UserWallet = require("../models/userWallet")
 const creditCard = require('../models/creditCard')
+const History = require('../models/history');
+const fetch = require('node-fetch')
+
+async function getIncomeHistory (username, callback){
+    const apiLink = `http://localhost:3000/features/getIncomeHistory/${username}`
+    // const apiLink = `http://paywind.up.railway.app/features/getIncomeHistory/${username}`
+    const response = await fetch(apiLink)
+    .then(res => res.json())
+    .then(data => callback(data))
+}
 
 function checkUser(req, res, link) {
     if(req.session.passport != undefined) {
@@ -80,7 +91,16 @@ router.post('/recharge', (req, res) => {
                                 if(err){
                                    return res.send(err)
                                 }
-                                return res.render('assets/layouts/notice.pug', { message: "success" })
+                                const history = new History()
+                                history.usernameReceived = addMoney_res.username
+                                history.phoneNumberReceived = addMoney_res.phoneNumber
+                                history.money = money
+                                history.save(function(err, history_res){
+                                    if(err){
+                                        return res.render('assets/layouts/notice.pug', { message: "failed" })
+                                    }
+                                    return res.render('assets/layouts/notice.pug', { message: "success" })
+                                })
                             })
                         }
                     })
@@ -99,7 +119,20 @@ router.get('/buy_mobile_card', (req, res) => {
 })
 
 router.get('/history', (req, res) => {
-    checkUser(req, res, "history.pug")
+    if(req.session.passport != undefined) {
+        const data = req.session.passport.user
+        User.findOne({_id: data}, function(err, result) {
+            if(err) {
+                console.log(err)
+            }
+
+            getIncomeHistory(result.local.username, (json) => {
+                return res.render('../views/account/user/features/history', { username: result.local.username, items: json })
+            })
+        })
+    }
+    else
+        return res.redirect('/')
 })
 
 router.get('/add-info', (req, res) => {
@@ -109,5 +142,7 @@ router.get('/add-info', (req, res) => {
 router.get('/change-password', (req, res) => {
     checkUser(req, res, "change-password.pug")
 })
+
+router.get('/getIncomeHistory/:username', userController.incomeHistory)
 
 module.exports = router
