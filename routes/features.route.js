@@ -62,7 +62,7 @@ router.post('/recharge', (req, res) => {
         "cvv": data.cvv
     }, function(err, result){
         if(err){
-            return res.send(err)
+            return res.render('assets/layouts/notice.pug', { message: 'failed' })
         }
         else {
             UserWallet.findOne({ "idCardNumber": result.idCardNumber }, function(err, wallet_res){
@@ -74,7 +74,7 @@ router.post('/recharge', (req, res) => {
                         if(err){
                            return res.send(err)
                         }
-                        return res.send({ code: "success", data: addMoney_res })
+                        return res.render('assets/layouts/notice.pug', { message: "success" })
                     })
                 }
             })

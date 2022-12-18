@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/style.min.css")
+        link(rel="icon" href="/images/Logomark.png")
+        title PayWind | Recharge
+    
+    body(class="w-screen h-screen justify-center items-center bg-[#E1E5E8] flex flex-col", id="body")
+        div(class="bg-white p-8 flex flex-col rounded-2xl gap-6 items-center justify-center")
+            if message = 'successful'
+                h1(class="text-green-500 text-4xl font-extrabold") Recharge Successfully!!!
+                p(class="text-lg font-semibold") Please check balance in Profile page!
+                a(href="/account/user/dashboard",class="border h-fit px-4 py-2 rounded-md cursor-pointer bg-blue-500 text-white ease-in-out delay-100 hover:bg-blue-700 hover:-translate-y-1.5 hover:scale-105 duration-300 font-semibold") 
+                    button Profile
+            else
+                h1(class="text-red-600 text-4xl font-extrabold") Recharge Failed!!!
+                    p(class="text-lg font-semibold") Please check your credit card's information again!
+                    a(href="/account/user/dashboard",class="border h-fit px-4 py-2 rounded-md cursor-pointer bg-blue-500 text-white ease-in-out delay-100 hover:bg-blue-700 hover:-translate-y-1.5 hover:scale-105 duration-300 font-semibold") 
+                        button Profile
