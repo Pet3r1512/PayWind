@@ -17,27 +17,27 @@ html(lang="en")
       div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
          include ../../assets/layouts/header.pug
          +header(username)
-         div(class="h-[500px] overflow-auto mt-10")
-            table(class="table-fixed font-sourcepro")
+         div(class="h-[500px] w-full overflow-auto mt-10")
+            table(class="table-fixed font-sourcepro w-full")
                thead(class="bg-gray-100 sticky top-[-1px] z-[1]")
                   tr
-                     th(class="bg-gray-400 border text-left px-8 py-4") Username
-                     th(class="bg-gray-400 border text-left px-8 py-4") Full Name
-                     th(class="bg-gray-400 border text-left px-8 py-4") Email
-                     th(class="bg-gray-400 border text-left px-8 py-4") Phone
-                     th(class="bg-gray-400 border text-left px-8 py-4") Status
-                     th(class="bg-gray-400 border text-left px-8 py-4") Action
+                     th(class="bg-gray-400 border px-4 py-2 w-[120px] text-center") Username
+                     th(class="bg-gray-400 border px-8 py-4 w-[250px] text-center") Full Name
+                     th(class="bg-gray-400 border px-8 py-4 w-[400px] text-center") Email
+                     th(class="bg-gray-400 border px-8 py-4 w-[150px] text-center") Phone
+                     th(class="bg-gray-400 border px-8 py-4 w-[120px] text-center") Status
+                     th(class="bg-gray-400 border px-8 py-4 w-[120px] text-center") Action
                tbody
                   for item in items
                      tr(class="h-[110px]")
-                        td(class="border px-8 py-4") #{item.local.username}
-                        td(class="border px-8 py-4") #{item.local.fullname}
-                        td(class="border px-8 py-4") #{item.local.email}
-                        td(class="border px-8 py-4") #{item.local.phoneNumber}
-                        td(class="border px-8 py-4") #{item.local.isVerified}
-                        td(class="border px-8 py-4")
+                        td(class="border px-4 py-2 w-[120px]") #{item.local.username}
+                        td(class="border px-8 py-4 w-[250px]") #{item.local.fullname}
+                        td(class="border px-8 py-4 w-[400px] wordbreak") #{item.local.email}
+                        td(class="border px-8 py-4 w-[150px]") #{item.local.phoneNumber}
+                        td(class="border px-8 py-4 w-[120px]") #{item.local.isVerified}
+                        td(class="border px-8 py-4 w-[120px]")
                            a(class="underline text-blue-400" href=`admin/approve/${item.local.username}`) Approve
          if msg
-            p(class="text-green-400" id="msg") #{msg}
+            p(class="bg-green-500 text-white w-fit px-4 py-2 rounded-lg text-center font-semibold mt-2" id="msg") #{msg}
       div(class="absolute bottom-0 w-full")
          include ../../assets/layouts/footer.pug

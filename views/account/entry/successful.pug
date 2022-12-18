@@ -18,7 +18,9 @@ html(lang="en")
       //-       include ../../assets/javascripts/show_pass.js
       //-       include ../../assets/javascripts/toggleMode.js
 
-   body(class="w-screen h-screen bg-[#E1E5E8] flex flex-col", id="body")
-      p Sign Up Successful
-      button
-         a(href="signin") Ok
+   body(class="w-screen h-screen justify-center items-center bg-[#E1E5E8] flex flex-col", id="body")
+      div(class="bg-white p-8 flex flex-col rounded-2xl gap-6 items-center justify-center")
+         h1(class="text-green-500 text-4xl font-extrabold") Sign Up Successfully!!!
+         p(class="text-lg font-semibold") Please check your email's inbox to get Log In information!
+         a(href="signin",class="border h-fit px-4 py-2 rounded-md cursor-pointer bg-blue-500 text-white ease-in-out delay-100 hover:bg-blue-700 hover:-translate-y-1.5 hover:scale-105 duration-300 font-semibold") 
+            button Sign in
