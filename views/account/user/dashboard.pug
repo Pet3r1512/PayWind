@@ -34,6 +34,7 @@ html(lang="en")
 
             div(class="flex flex-col items-center mb-4 md:mb-8 gap-y-6")
                include ../../assets/layouts/_creditCard.pug
+               +creditCard(creditCard, fullname, exp)
                include ../../assets/layouts/_summary.pug
                div(class="flex flex-col items-end md:mt-14 gap-4 md:gap-12")
                   +status('ready')

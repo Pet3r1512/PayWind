@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const saltRounds = 10
 const bcrypt = require("bcrypt")
 const User = require('../models/user')
+const UserWallet = require('../models/userWallet')
 const userController = require('../api/userController')
 const nodemailer = require('nodemailer')
 
@@ -15,8 +16,19 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-function generateAccessToken(username) {
-    return jwt.sign({ "user": username }, process.env.TOKEN_SECRET, { expiresIn: '1800s' })
+function addUserWallet(username, phoneNumber, res){
+    const wallet = new UserWallet()
+    wallet.username = username
+    wallet.phoneNumber = phoneNumber
+
+    wallet.save(function(err, result){
+        if(err){
+            return res.render('account/entry/error', { err: err })
+        }
+        else {
+            return res.render('account/entry/successful')
+        }
+    })
 }
 
 function addUser(username, fullname, password, dob, email, phoneNumber, address, res) {
@@ -56,7 +68,7 @@ function addUser(username, fullname, password, dob, email, phoneNumber, address,
                             return res.render('account/entry/error', { err: err })
                         }
                         else {
-                            return res.render('account/entry/successful')
+                            addUserWallet(username, phoneNumber, res)
                         }
                     })
                 }
@@ -112,7 +124,7 @@ router.post('/signin', passport.authenticate('local', {
     if(req.user.local.username == "admin"){
         return res.redirect('/admin')
     }
-    return res.redirect(`/user/${req.user.local.username}`)
+    return res.redirect(`/user/dashboard`)
 })
 
 router.get('/signout', (req, res) => {

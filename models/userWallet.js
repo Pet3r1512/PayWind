@@ -9,11 +9,14 @@ const userWalletSchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    idCardNumber: [String],
+    idCardNumber: {
+        type: [String],
+        default: ['111111', '222222', '333333']
+    },
     balance: {
         type: Number,
         default: 0
     }
 })
 
-module.exports = mongoose.model("UserAccount", userWalletSchema)
+module.exports = mongoose.model("UserWallet", userWalletSchema)

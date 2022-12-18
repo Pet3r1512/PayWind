@@ -1,14 +1,15 @@
-body
-    div(class="w-[315px] h-[184px] md:w-[513.6px] md:h-[300px] rounded-[30px] bg-gradient-to-r from-[#f46b45] to-[#eea849] px-[30px] py-[25px] relative")
-        div(class="flex justify-between") 
-            div(class="font-sourcepro flex flex-col gap-4")
-                p(class="font-semibold text-[13px] md:text-[20px] text-white") Current Balance 
-                h4(class="font-bold text-xl md:text-[32px] text-white") 1.000.000.000 VND
-            div(class="w-[45px] h-[36px] md:w-[120px] md:h-[95.45px]")
-                include ../../../public/icons/mastercard-2.svg
-                img(src="/images/main_logo.png", alt="PayWind", class="mt-8 w-[120px]")
-        div(class="w-full pr-[60px] flex flex-col md:gap-6 absolute bottom-[25px]")
-            h2(class="font-extrabold text-xl md:text-[30px] text-white") John Doe 
-            div(class="w-full flex justify-between font-semibold text-neutral-200 md:text-[20px]")
-                p 8272 2710 2752 2787
-                p 09/25
+mixin creditCard(info, fullname, exp)
+    body
+        div(class="w-[315px] h-[184px] md:w-[513.6px] md:h-[300px] rounded-[30px] bg-gradient-to-r from-[#f46b45] to-[#eea849] px-[30px] py-[25px] relative")
+            div(class="flex justify-between")
+                div(class="font-sourcepro flex flex-col gap-4")
+                    p(class="font-semibold text-[13px] md:text-[20px] text-white") Current Balance
+                    h4(class="font-bold text-xl md:text-[32px] text-white") #{info.balance} VND
+                div(class="w-[45px] h-[36px] md:w-[120px] md:h-[95.45px]")
+                    include ../../../public/icons/mastercard-2.svg
+                    img(src="/images/main_logo.png", alt="PayWind", class="mt-8 w-[120px]")
+            div(class="w-full pr-[60px] flex flex-col md:gap-6 absolute bottom-[25px]")
+                h2(class="font-extrabold text-xl md:text-[30px] text-white") #{fullname}
+                div(class="w-full flex justify-between font-semibold text-neutral-200 md:text-[20px]")
+                    p #{info.idCardNumber[0]}
+                    p #{exp}
