@@ -172,9 +172,7 @@ router.post('/change-password', (req, res) => {
                                 return res.send({ code: "hash failed", msg: err })
                             }
                             else {
-                                User.findOneAndUpdate({ "local.username": result.local.username }, {
-                                    $set:{"local.password ": hash}
-                                }, {returnOriginal:false}, function(err, changepass_res){
+                                User.findOneAndUpdate({ _id: userId }, { $set:{ 'local.password': hash } }, { new: true, upsert: false }, function(err, changepass_res){
                                     if(err){
                                         return res.send({ code: "update failed", msg: err })
                                     }
