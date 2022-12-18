@@ -29,5 +29,14 @@ module.exports = {
 
             return res.json({ isExisted: true })
         })
+    },
+
+    inactiveUserList: (req, res) => {
+        User.find({ "local.isVerified": "Pending" }, 'local.username local.fullname local.email local.phoneNumber local.isVerified', function(err, data){
+            if(err){
+                return res.json({ "err": err })
+            }
+            return res.json(data)
+        })
     }
 }

@@ -23,8 +23,8 @@ const userSchema = mongoose.Schema({
             default: null
         },
         isVerified: {
-            type: Boolean,
-            default: false
+            type: String,
+            default: "Pending"
         }
     },
 })
