@@ -72,9 +72,9 @@ router.post('/recharge', (req, res) => {
                 else {
                     UserWallet.findOneAndUpdate({ "idCardNumber": result.idCardNumber }, { "balance": wallet_res.balance + money }, function(err, addMoney_res){
                         if(err){
-                           return res.send(err)
+                            return res.render('assets/layouts/notice.pug', { message: "failed" })
                         }
-                        return res.render('assets/layouts/notice.pug', { message: "success" })
+                        return res.render('assets/layouts/notice.pug', { message: "successful" })
                     })
                 }
             })
