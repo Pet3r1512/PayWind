@@ -7,16 +7,19 @@ html(lang="en")
       title PayWind | Admin
       link(rel="icon" href="/images/Logomark.png")
       link(href="/css/style.min.css", rel="stylesheet")
-      block script
-         script
+      script.
+         setTimeout(removeMessage, 5000);
+         function removeMessage(){
+            document.getElementById("msg").remove()
+         }
 
    body
       div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
          include ../../assets/layouts/header.pug
          +header(username)
-         div(class="h-[500px] overflow-auto")
-            table(class="table-fixed mt-6 ml-6 font-sourcepro")
-               thead(class="bg-gray-100 ")
+         div(class="h-[500px] overflow-auto mt-10")
+            table(class="table-fixed font-sourcepro")
+               thead(class="bg-gray-100 sticky top-[-1px] z-[1]")
                   tr
                      th(class="bg-gray-400 border text-left px-8 py-4") Username
                      th(class="bg-gray-400 border text-left px-8 py-4") Full Name
@@ -24,9 +27,9 @@ html(lang="en")
                      th(class="bg-gray-400 border text-left px-8 py-4") Phone
                      th(class="bg-gray-400 border text-left px-8 py-4") Status
                      th(class="bg-gray-400 border text-left px-8 py-4") Action
-               tbody    
+               tbody
                   for item in items
-                     tr(class="")
+                     tr(class="h-[110px]")
                         td(class="border px-8 py-4") #{item.local.username}
                         td(class="border px-8 py-4") #{item.local.fullname}
                         td(class="border px-8 py-4") #{item.local.email}
@@ -34,4 +37,7 @@ html(lang="en")
                         td(class="border px-8 py-4") #{item.local.isVerified}
                         td(class="border px-8 py-4")
                            a(class="underline text-blue-400" href=`admin/approve/${item.local.username}`) Approve
-      include ../../assets/layouts/footer.pug
+         if msg
+            p(class="text-green-400" id="msg") #{msg}
+      div(class="absolute bottom-0 w-full")
+         include ../../assets/layouts/footer.pug

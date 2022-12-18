@@ -3,16 +3,18 @@ mixin header(user)
         div(class="flex justify-between items-center mt-[30px]")
             span(class="h-[40px] w-[40px] md:hidden")
                 include ../../../public/icons/menu.svg
-            a(href="/")
-                img(src="/images/main_logo.png", alt="PayWind", class="")
 
             if user == "admin"
+                a(href="/admin")
+                    img(src="/images/LogoAdmin.png", alt="PayWind", class="")
                 div(class="flex flex-col-reverse gap-2 items-center md:flex-row")
                     p=user
                     button(class="bg-blue-600 text-white ease-in-out deplay-100 hover:bg-blue-700 duration-300 px-[20px] py-[5px] rounded-lg font-semibold")
                         a(href="/account/signout") Sign Out
 
             else if user == null
+                a(href="/")
+                    img(src="/images/main_logo.png", alt="PayWind", class="")
                 div(class="hidden md:block")
                     include ./_menu.pug
                     +menu(null)
@@ -20,6 +22,8 @@ mixin header(user)
                     a(href="/account/signin") Sign In
 
             else
+                a(href="/")
+                    img(src="/images/main_logo.png", alt="PayWind", class="")
                 div(class="hidden md:block")
                     include ./_menu.pug
                     +menu(user)

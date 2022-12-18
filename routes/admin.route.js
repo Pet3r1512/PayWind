@@ -14,13 +14,14 @@ async function getUserDataList (callback){
 router.get('/', (req, res) => {
     if(req.session.passport != undefined){
         const data = req.session.passport.user
+        const message = req.flash("success_approve")
 
         getUserDataList((json) => {
             User.findOne({ _id: data }, function(err,result){
                 if(err){
                     console.log(err)
                 } else {
-                    return res.render('account/admin/admin', { username: result.local.username, items: json })
+                    return res.render('account/admin/admin', { username: result.local.username, items: json, msg: message })
                 }
             })
         })
@@ -32,18 +33,16 @@ router.get('/', (req, res) => {
 
 router.get('/approve/:id', (req, res) => {
     if(req.session.passport != undefined){
-        const data = req.session.passport.user
+        const id = req.params.id
 
-        User.findOne({ _id: data }, function(err,result){
+        User.findOneAndUpdate({ "local.username": id }, { "local.isVerified": "Activated" }, function(err,result){
             if(err){
                 console.log(err)
             } else {
-                return res.render('account/admin/adminApprove', { username: result.local.username})
+                req.flash("success_approve", "Successfully Approve!")
+                return res.redirect('/admin')
             }
         })
-    }
-    else {
-        return res.redirect('/')
     }
 })
 
