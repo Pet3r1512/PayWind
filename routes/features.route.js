@@ -65,16 +65,24 @@ router.post('/recharge', (req, res) => {
             return res.send(err)
         }
         else {
-            UserWallet.findOne({ "idCardNumber": result.idCardNumber }, function(err, wallet_res){
+            const data = req.session.passport.user
+            User.findOne({ _id: data }, function(err, user_res){
                 if(err){
                     return res.send(err)
                 }
                 else {
-                    UserWallet.findOneAndUpdate({ "idCardNumber": result.idCardNumber }, { "balance": wallet_res.balance + money }, function(err, addMoney_res){
+                    UserWallet.findOne({ "idCardNumber": result.idCardNumber, "username": user_res.local.username }, function(err, wallet_res){
                         if(err){
-                           return res.send(err)
+                            return res.send(err)
                         }
-                        return res.send({ code: "success", data: addMoney_res })
+                        else {
+                            UserWallet.findOneAndUpdate({ "idCardNumber": result.idCardNumber, "username": user_res.local.username }, { "balance": wallet_res.balance + money }, function(err, addMoney_res){
+                                if(err){
+                                   return res.send(err)
+                                }
+                                return res.send({ code: "success", data: addMoney_res })
+                            })
+                        }
                     })
                 }
             })
