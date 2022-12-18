@@ -34,13 +34,13 @@ router.get('/approve/:id', (req, res) => {
     if(req.session.passport != undefined){
         const data = req.session.passport.user
 
-            User.findOne({ _id: data }, function(err,result){
-                if(err){
-                    console.log(err)
-                } else {
-                    return res.render('account/admin/admin', { username: result.local.username, items: json })
-                }
-            })
+        User.findOne({ _id: data }, function(err,result){
+            if(err){
+                console.log(err)
+            } else {
+                return res.render('account/admin/adminApprove', { username: result.local.username})
+            }
+        })
     }
     else {
         return res.redirect('/')
