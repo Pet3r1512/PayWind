@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
             if(err){
                 console.log(err)
             } else {
-                return res.render('account/admin/home', { username: result.local.username })
+                return res.render('account/admin/home', { username: result.local.username, msg:req.flash("success_approve") })
             }
         })
     }
@@ -39,14 +39,13 @@ router.get('/', (req, res) => {
 router.get('/inactive', (req, res) => {
     if(req.session.passport != undefined){
         const data = req.session.passport.user
-        const message = req.flash("success_approve")
 
         getUserDataList((json) => {
             User.findOne({ _id: data }, function(err,result){
                 if(err){
                     console.log(err)
                 } else {
-                    return res.render('account/admin/admin', { username: result.local.username, items: json, msg: message })
+                    return res.render('account/admin/admin', { username: result.local.username, items: json })
                 }
             })
         })
