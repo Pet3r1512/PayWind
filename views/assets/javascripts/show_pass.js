@@ -30,8 +30,8 @@ function show_pass() {
         }
     }
 
-    if(passInput && passConfirm){
-        if ((passInput.type == "password" && passConfirm.type == "password")) {
+    if(passInput && passConfirm && passOld){
+        if ((passInput.type == "password" && passConfirm.type == "password" && passOld.type == "password")) {
             passInput.type = "text"
             passConfirm.type = "text"
             passOld.type = "text"
@@ -46,7 +46,6 @@ function show_pass() {
             passInput.type = "password"
             passConfirm.type = "password"
             passOld.type = "password"
-            pass.type = "password"
 
             for (let i = 0; i < eyeOn.length; i++) {
                 eyeOff[i].style.visibility = "hidden"
