@@ -36,8 +36,8 @@ html(lang="en")
                         td(class="border px-8 py-4 w-[150px]") #{item.local.phoneNumber}
                         td(class="border px-8 py-4 w-[120px]") #{item.local.isVerified}
                         td(class="border px-8 py-4 w-[120px]")
-                           a(class="underline text-blue-400" href=`admin/approve/${item.local.username}`) Approve
-                     
+                           if item.local.isVerified == "Pending"
+                              a(class="underline text-blue-400" href=`admin/approve/${item.local.username}`) Approve
          if msg
             p(class="bg-green-500 text-white w-fit px-4 py-2 rounded-lg text-center font-semibold mt-2" id="msg") #{msg}
       div(class="absolute bottom-0 w-full")
