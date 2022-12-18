@@ -4,16 +4,22 @@ const userController = require('../api/userController');
 const fetch = require('node-fetch')
 
 async function getUserDataList (callback){
-    const apiLink = "http://localhost:3000/admin/inactiveUser"
-    // const apiLink = "http://paywind.up.railway.app/admin/inactiveUser"
+    //Nếu chạy dự án ở local thì sử dụng dòng 9 thay cho dòng 10
+
+    // const apiLink = "http://localhost:3000/admin/inactiveUser"
+    const apiLink = "http://paywind.up.railway.app/admin/inactiveUser"
+
     const response = await fetch(apiLink)
     .then(res => res.json())
     .then(data => callback(data))
 }
 
 async function getActiveUser(callback){
-    const apiLink = "http://localhost:3000/admin/activeUser"
-    // const apiLink = "http://paywind.up.railway.app/admin/activeUser"
+    //Nếu chạy dự án ở local thì sử dụng dòng 20 thay cho dòng 21
+
+    // const apiLink = "http://localhost:3000/admin/activeUser"
+    const apiLink = "http://paywind.up.railway.app/admin/activeUser"
+    
     const response = await fetch(apiLink)
     .then(res => res.json())
     .then(data => callback(data))

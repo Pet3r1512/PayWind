@@ -9,6 +9,8 @@ async function phoneValidation() {
         submit.disabled = false
         submit.style.backgroundColor = "rgb(99, 102, 241)"
     } else {
+        //Nếu chạy dự án ở local thì sử dụng dòng 15 thay cho dòng 14
+
         const apiLink = `http://paywind.up.railway.app/account/phone/isExisted/${phoneNumber.value}`
         // const apiLink = `http://localhost:3000/account/phone/isExisted/${phoneNumber.value}`
 
