@@ -1,10 +1,15 @@
 function show_pass() {
-    var pass = document.getElementById('pass')
+    var passInput = document.getElementById('pass_input')
+    var passConfirm = document.getElementById('confirm_pass')
+    var passOld = document.getElementById('old_password')
     var eyeOn = document.getElementsByClassName('eye-on')
     var eyeOff = document.getElementsByClassName('eye-off')
 
-    if (pass.type == "password") {
-        pass.type = "text"
+    if (passInput.type == "password" && passConfirm.type == "password") {
+        passInput.type = "text"
+        passConfirm.type = "text"
+        passOld.type = "text"
+
         for (let i = 0; i < eyeOn.length; i++) {
             eyeOn[i].style.visibility = "hidden"
             eyeOn[i].style.display = "none"
@@ -12,7 +17,10 @@ function show_pass() {
             eyeOff[i].style.display = "block"
         }
     } else {
-        pass.type = "password"
+        passInput.type = "password"
+        passConfirm.type = "password"
+        passOld.type = "password"
+
         for (let i = 0; i < eyeOn.length; i++) {
             eyeOff[i].style.visibility = "hidden"
             eyeOff[i].style.display = "none"
