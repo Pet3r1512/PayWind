@@ -30,6 +30,23 @@ router.get('/', (req, res) => {
     }
 })
 
+router.get('/approve/:id', (req, res) => {
+    if(req.session.passport != undefined){
+        const data = req.session.passport.user
+
+            User.findOne({ _id: data }, function(err,result){
+                if(err){
+                    console.log(err)
+                } else {
+                    return res.render('account/admin/admin', { username: result.local.username, items: json })
+                }
+            })
+    }
+    else {
+        return res.redirect('/')
+    }
+})
+
 router.get('/inactiveUser', userController.inactiveUserList)
 
 module.exports = router

@@ -15,22 +15,23 @@ html(lang="en")
          include ../../assets/layouts/header.pug
          +header(username)
          div
-            p This is admin page
-            table(class="table-auto gap-4")
-               thead
+            table(class="table-fixed mt-6 ml-6 font-sourcepro")
+               thead(class="bg-gray-100 ")
                   tr
                      th(class="bg-gray-400 border text-left px-8 py-4") Username
                      th(class="bg-gray-400 border text-left px-8 py-4") Full Name
                      th(class="bg-gray-400 border text-left px-8 py-4") Email
                      th(class="bg-gray-400 border text-left px-8 py-4") Phone
                      th(class="bg-gray-400 border text-left px-8 py-4") Status
-               tbody
+                     th(class="bg-gray-400 border text-left px-8 py-4") Action
+               tbody(class="h-0 flex-grow overflow-y-auto")
                   for item in items
-                     tr
+                     tr(class="h-[110px]")
                         td(class="border px-8 py-4") #{item.local.username}
                         td(class="border px-8 py-4") #{item.local.fullname}
                         td(class="border px-8 py-4") #{item.local.email}
                         td(class="border px-8 py-4") #{item.local.phoneNumber}
                         td(class="border px-8 py-4") #{item.local.isVerified}
-            button
-               a(href="admin/inactiveUser") Inactive User list
+                        td(class="border px-8 py-4")
+                           a(class="underline text-blue-400" href=`admin/approve/${item.local.username}`) Approve
+      include ../../assets/layouts/footer.pug
