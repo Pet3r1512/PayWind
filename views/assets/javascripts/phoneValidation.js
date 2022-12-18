@@ -9,8 +9,8 @@ async function phoneValidation() {
         submit.disabled = false
         submit.style.backgroundColor = "rgb(99, 102, 241)"
     } else {
-        // const apiLink = `http://paywind.up.railway.app/account/phone/isExisted/${phoneNumber.value}`
-        const apiLink = `http://localhost:3000/account/phone/isExisted/${phoneNumber.value}`
+        const apiLink = `http://paywind.up.railway.app/account/phone/isExisted/${phoneNumber.value}`
+        // const apiLink = `http://localhost:3000/account/phone/isExisted/${phoneNumber.value}`
 
         const res = await (await fetch(apiLink)).json()
 
