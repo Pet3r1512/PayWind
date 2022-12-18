@@ -7,9 +7,40 @@ html(lang="en")
       title PayWind | Admin
       link(rel="icon" href="/images/Logomark.png")
       link(href="/css/style.min.css", rel="stylesheet")
+      link(rel='preconnect' href='https://fonts.googleapis.com')
+      link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+      link(href='https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap' rel='stylesheet')
+      link(href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet")
    body
-      div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
-         include ../../assets/layouts/header.pug
+      div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col")
+         include ../../assets/layouts/headerStatus.pug
          +header(username)
-         div
-            p This is admin page
+            //- create table four column username, email, created at, status
+         table(class="table-fixed lg:mt-16 font-sourcepro")
+            thead(class="bg-gray-100 ")
+               tr
+                  th(class="py-4") Username
+                  th(class="py-4") Email
+                  th(class="py-4") Created at
+                  th(class="py-4") Status
+            tbody
+               tr(class="bg-yellow-300 border-4 ")
+                  th(class="py-4") demoUsername
+                  th(class="py-4") demoUsername@email.com
+                  th(class="py-4") 2021-05-01
+                  th(class="py-4") Pending 
+               tr(class="bg-green-300 border-4")
+                  th(class="py-4") demoUsername
+                  th(class="py-4") demoUsername@email.com
+                  th(class="py-4") 2021-05-01
+                  th(class="py-4") Activated 
+               tr(class="bg-orange-300 border-4")
+                  th(class="py-4") demoUsername
+                  th(class="py-4") demoUsername@email.com
+                  th(class="py-4") 2021-05-01
+                  th(class="py-4") Disabled
+               tr(class="bg-red-300 border-4")
+                  th(class="py-4") demoUsername
+                  th(class="py-4") demoUsername@email.com
+                  th(class="py-4") 2021-05-01
+                  th(class="py-4") Banned   

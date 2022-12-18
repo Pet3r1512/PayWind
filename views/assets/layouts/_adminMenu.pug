@@ -1,0 +1,12 @@
+mixin menu(user)
+    body
+        ul(class="flex items-center gap-x-6 md:gap-x-10 font-semibold")
+            li
+                a(href="/", class="hover:text-blue-600 duration-150 ease-linear transition text-xl") Pending 
+            li
+                a(href="/about_us", class="hover:text-blue-600 duration-150 ease-linear transition text-xl") Activated 
+            li
+                a(href="/features", class="hover:text-blue-600 duration-150 ease-linear transition text-xl") Disabled
+            li
+                a(href="/account/user/dashboard", class="hover:text-blue-600 duration-150 ease-linear transition text-xl") Blocked
+                    

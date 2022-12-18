@@ -6,7 +6,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				nunito_sans: ["Nunito Sans", "sans-serif"],
+				'nunito_sans': ["Nunito Sans", "sans-serif"],
 				'kanit': 'Kanit, sans-serif',
 				'sourcepro': '"Source Sans Pro", sans-serif'
 			},
