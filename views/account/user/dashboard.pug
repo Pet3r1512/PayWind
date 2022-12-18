@@ -8,7 +8,7 @@ html(lang="en")
       link(rel="icon" href="/images/Logomark.png")
       link(rel="stylesheet", href="/css/style.min.css", type="text/css")
       include ../../assets/layouts/_statusBar.pug
-   body
+   body(class="overflow-x-auto")
       div(class="container max-w-7xl mx-auto px-4 sm:px-2 md:px-6 flex flex-col font-nunito_sans")
          include ../../assets/layouts/header.pug
          +header(username)
