@@ -5,6 +5,8 @@ const UserWallet = require("../models/userWallet")
 const creditCard = require('../models/creditCard')
 const History = require('../models/history');
 const fetch = require('node-fetch')
+const bcrypt = require('bcrypt')
+const saltRounds = 10;
 
 async function getIncomeHistory (username, callback){
     const apiLink = `http://localhost:3000/features/getIncomeHistory/${username}`
@@ -141,6 +143,51 @@ router.get('/add-info', (req, res) => {
 
 router.get('/change-password', (req, res) => {
     checkUser(req, res, "change-password.pug")
+})
+
+router.post('/change-password', (req, res) => {
+    const data = req.body
+    const userId = req.session.passport.user
+
+    User.findOne({ _id: userId }, function(err, result){
+        if(err){
+            return res.send({ code: "not found", msg: err })
+        }
+        else {
+            bcrypt.compare(data.old_password, result.local.password, function(err, pass_res){
+                if(err){
+                    return res.send({ code: "compare failed", msg: err })
+                }
+
+                else{
+                    if(pass_res == false){
+                        return res.send({code: "failed", msg: "Wrong password" })
+                    }
+                    else {
+                        bcrypt.hash(data.password, saltRounds, function(err, hash){
+                            if(err){
+                                return res.send({ code: "hash failed", msg: err })
+                            }
+                            else {
+                                User.findOneAndUpdate({ "local.username": result.local.username }, {
+                                    $set:{"local.password ": hash}
+                                }, {returnOriginal:false}, function(err, changepass_res){
+                                    if(err){
+                                        return res.send({ code: "update failed", msg: err })
+                                    }
+                                    else {
+                                        return res.send({code: "success", data: changepass_res})
+                                        // req.session.destroy()
+                                        // return res.redirect('/')
+                                    }
+                                })
+                            }
+                        })
+                    }
+                }
+            })
+        }
+    })
 })
 
 router.get('/getIncomeHistory/:username', userController.incomeHistory)
