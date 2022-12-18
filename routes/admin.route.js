@@ -4,8 +4,8 @@ const userController = require('../api/userController');
 const fetch = require('node-fetch')
 
 async function getUserDataList (callback){
-    const apiLink = "http://localhost:3000/admin/inactiveUser"
-    // const apiLink = "http://paywind.up.railway.app/admin/inactiveUser"
+    // const apiLink = "http://localhost:3000/admin/inactiveUser"
+    const apiLink = "http://paywind.up.railway.app/admin/inactiveUser"
     const response = await fetch(apiLink)
     .then(res => res.json())
     .then(data => callback(data))
