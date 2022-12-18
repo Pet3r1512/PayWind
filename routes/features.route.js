@@ -143,6 +143,11 @@ router.get('/change-password', (req, res) => {
     checkUser(req, res, "change-password.pug")
 })
 
+router.post('/change-password', (req, res) => {
+    const data = req.body
+    return res.send(data)
+})
+
 router.get('/getIncomeHistory/:username', userController.incomeHistory)
 
 module.exports = router
